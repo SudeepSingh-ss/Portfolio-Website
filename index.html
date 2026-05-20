@@ -72,7 +72,6 @@
     }
     .theme-toggle-btn:hover { border-color: var(--primary); box-shadow: 0 0 12px var(--neon-glow); }
 
-    /* Full Screen Layout Blocks */
     .full-section {
       min-height: 100vh;
       display: flex;
@@ -115,8 +114,8 @@
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
     footer { background: #070a13; padding: 40px 20px; text-align: center; border-top: 1px solid var(--glass-border); scroll-snap-align: end; }
-    .footer-links a { color: #475569; font-size: 1.5rem; transition: 0.3s; margin: 0 10px; }
-    .footer-links a:hover { color: var(--primary); transform: translateY(-3px); }
+    .footer-links a { font-size: 1.8rem; transition: 0.3s; margin: 0 15px; display: inline-block; }
+    .footer-links a:hover { transform: translateY(-3px); }
   </style>
 </head>
 <body>
@@ -127,7 +126,7 @@
       <nav class="nav-links">
         <a href="#home">Home</a>
         <a href="#projects">Projects</a>
-        <a href="slides.html" style="color: var(--primary);"><i class="fas fa-presentation-screen" style="margin-right: 4px;"></i> Academic Roadmap</a>
+        <a href="slides.html" style="color: var(--primary);"><i class="fas fa-chart-network"></i> Academic Roadmap</a>
         <button class="theme-toggle-btn" onclick="toggleTheme()"><i class="fas fa-palette"></i> UI Theme</button>
       </nav>
     </div>
@@ -169,29 +168,28 @@
     </div>
   </section>
 
-    <footer>
+  <footer>
     <div style="margin-bottom: 25px;">
       <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; color: var(--text);">Let's Connect</h3>
       <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">प्रोजेक्ट्स या कोलैबोरेशन के लिए आप मुझसे यहाँ संपर्क कर सकते हैं:</p>
     </div>
     
     <div class="footer-links" style="margin-bottom: 20px;">
-      <a href="https://linkedin.com/in/YOUR_LINKEDIN_USERNAME" target="_blank" title="Connect on LinkedIn" style="color: #0a66c2; font-size: 1.8rem; transition: 0.3s; margin: 0 15px; display: inline-block;">
+      <a href="https://linkedin.com/in/YOUR_LINKEDIN_USERNAME" target="_blank" title="Connect on LinkedIn" style="color: #0a66c2;">
         <i class="fab fa-linkedin"></i>
       </a>
-      <a href="https://github.com/sudeepsingh-ss" target="_blank" title="Follow on GitHub" style="color: var(--primary); font-size: 1.8rem; transition: 0.3s; margin: 0 15px; display: inline-block;">
+      <a href="https://github.com/sudeepsingh-ss" target="_blank" title="Follow on GitHub" style="color: var(--primary);">
         <i class="fab fa-github"></i>
       </a>
-      <a href="mailto:YOUR_EMAIL@gmail.com" title="Send an Email" style="color: #ea4335; font-size: 1.8rem; transition: 0.3s; margin: 0 15px; display: inline-block;">
+      <a href="mailto:YOUR_EMAIL@gmail.com" title="Send an Email" style="color: #ea4335;">
         <i class="fas fa-envelope"></i>
       </a>
     </div>
     
     <p style="font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--glass-border); padding-top: 15px; max-width: 600px; margin: 0 auto;">
-      © 2026 Sudeep Thakur | Academic Portfolio Hub. Built for High-Performance Presentation.
+      © 2026 Sudeep Thakur | Academic Portfolio Hub.
     </p>
-    </footer>
-  
+  </footer>
 
   <script>
     function toggleTheme() {
