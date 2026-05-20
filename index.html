@@ -3,57 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sudeep Thakur | Professional Portfolio</title>
+  <title>Sudeep Thakur | Cyber Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-    body { background: #020617; color: #f8fafc; line-height: 1.6; }
+    /* Premium Global Reset & Animations */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+    body { background: #020617; color: #f8fafc; line-height: 1.6; overflow-x: hidden; }
     
-    header { background: #0f172a; padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); position: sticky; top: 0; z-index: 100; }
+    /* Dynamic Background Mesh Grid */
+    body::before {
+      content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 15% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    /* Animated Cyber Header Navigation */
+    header { 
+      background: rgba(15, 23, 42, 0.7); 
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.08); 
+      position: sticky; top: 0; z-index: 100;
+      animation: slideDown 0.8s ease;
+    }
+    @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+    
     .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .logo-text { font-size: 1.5rem; font-weight: 800; color: #38bdf8; }
-    .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 20px; font-weight: 600; transition: 0.3s; }
-    .nav-links a:hover { color: #38bdf8; }
+    .logo-text { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
+    .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 25px; font-weight: 600; transition: 0.3s; font-size: 0.95rem; }
+    .nav-links a:hover { color: #38bdf8; text-shadow: 0 0 10px rgba(56, 189, 248, 0.4); }
 
-    .hero { max-width: 1200px; margin: 0 auto; padding: 80px 20px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
-    .hero-content { flex: 1; }
-    .hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; font-weight: 800; }
-    .hero-content h1 span { color: #38bdf8; }
-    .hero-content p { color: #94a3b8; font-size: 1.2rem; margin-bottom: 30px; }
-    .hero-btn { display: inline-block; background: #38bdf8; color: #020617; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3); transition: 0.3s; }
-
-    .projects-section { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-    .section-title { font-size: 2.2rem; font-weight: 700; text-align: center; margin-bottom: 40px; position: relative; }
-    .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: #38bdf8; margin: 10px auto 0 auto; border-radius: 2px; }
+    /* Premium Intro Section with Floating Animation */
+    .hero { max-width: 1200px; margin: 0 auto; padding: 100px 20px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .hero-content { flex: 1; animation: fadeInUp 1s ease-out; }
     
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .project-card { background: #0f172a; border: 1px solid rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; transition: 0.3s; }
-    .project-card:hover { transform: translateY(-5px); border-color: #38bdf8; }
-    .project-card i { font-size: 2.5rem; color: #38bdf8; margin-bottom: 20px; }
-    .project-card h3 { font-size: 1.4rem; margin-bottom: 12px; }
-    .project-card p { color: #94a3b8; margin-bottom: 20px; }
-    .proj-btn { color: #38bdf8; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; }
+    .hero-content h1 { font-size: 3.8rem; margin-bottom: 15px; font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
+    .hero-content h1 span { background: linear-gradient(135deg, #38bdf8, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-content p { color: #94a3b8; font-size: 1.25rem; margin-bottom: 35px; max-width: 600px; }
+    
+    .hero-btn { 
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, #38bdf8, #4f46e5); color: #fff; 
+      padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; 
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3); transition: all 0.4s ease; 
+    }
+    .hero-btn:hover { transform: translateY(-4px); box-shadow: 0 15px 35px rgba(56, 189, 248, 0.5), 0 0 15px #38bdf8; }
 
-    /* Responsive Iframe Container Wrapper */
-    .presentation-section { background: #090d16; padding: 60px 20px; }
+    /* Tech Cards Grid Layout with Glassmorphism & Neon Shadows */
+    .projects-section { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+    .section-title { font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 50px; letter-spacing: -0.5px; }
+    .section-title span { color: #38bdf8; }
+    
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
+    
+    .project-card { 
+      background: rgba(15, 23, 42, 0.45); 
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.06); 
+      padding: 35px; border-radius: 24px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), transparent); opacity: 0; transition: 0.4s;
+    }
+    .project-card:hover { 
+      transform: translateY(-8px); border-color: #38bdf8; 
+      box-shadow: 0 20px 40px -15px rgba(14, 165, 233, 0.2), 0 0 15px rgba(14, 165, 233, 0.05);
+    }
+    .project-card:hover::before { opacity: 1; }
+
+    .project-card i { font-size: 2.8rem; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 25px; display: block; }
+    .project-card h3 { font-size: 1.5rem; margin-bottom: 12px; font-weight: 700; }
+    .project-card p { color: #94a3b8; margin-bottom: 25px; font-size: 1rem; }
+    
+    .proj-btn { color: #38bdf8; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; transition: 0.2s; }
+    .project-card:hover .proj-btn { gap: 14px; color: #818cf8; }
+
+    /* Smooth 3D Slider Container Setup */
+    .presentation-section { background: rgba(9, 13, 22, 0.6); padding: 90px 20px; border-top: 1px solid rgba(255,255,255,0.04); }
+    
     .iframe-container {
       width: 100%;
       max-width: 1150px;
       margin: 0 auto;
       background: #0f172a;
-      border-radius: 24px;
+      border-radius: 28px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 30px 60px -15px rgba(0,0,0,0.8), 0 0 30px rgba(56, 189, 248, 0.05);
     }
-    /* Fixed internal aspect ratio to prevent box shrinking */
     iframe { width: 100%; height: 650px; border: none; display: block; }
 
-    footer { background: #0f172a; padding: 40px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px; }
-    .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
-    .footer-links a { color: #94a3b8; font-size: 1.5rem; transition: 0.3s; }
-    .footer-links a:hover { color: #38bdf8; }
-    footer p { color: #475569; font-size: 0.95rem; }
+    /* Keyframes for Smooth Fade Effects */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cyber Footer */
+    footer { background: #070a13; padding: 50px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 25px; }
+    .footer-links a { 
+      color: #475569; font-size: 1.6rem; transition: all 0.3s; 
+      width: 45px; height: 45px; background: rgba(255,255,255,0.02); 
+      display: flex; align-items: center; justify-content: center; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-links a:hover { color: #38bdf8; border-color: #38bdf8; background: rgba(56, 189, 248, 0.05); transform: translateY(-3px); }
+    footer p { color: #64748b; font-size: 0.95rem; font-weight: 500; }
   </style>
 </head>
 <body>
@@ -71,49 +131,55 @@
 
   <section id="home" class="hero">
     <div class="hero-content">
-      <h1>Hi, I'm <span>Sudeep Thakur</span></h1>
+      <h1>Hi, I'm <br><span>Sudeep Thakur</span></h1>
       <p>A passionate Computer Science student focusing on developing clean code structures, responsive architectures, and efficient system designs framework.</p>
-      <a href="#projects" class="hero-btn">Explore My Work</a>
+      <a href="#projects" class="hero-btn">Explore My System <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
 
   <section id="projects" class="projects-section">
-    <h2 class="section-title">My Technical Projects</h2>
+    <h2 class="section-title">My Technical <span>Projects</span></h2>
     <div class="projects-grid">
+      
       <div class="project-card">
-        <i class="fas fa-laptop-code"></i>
+        <i class="fas fa-shield-halved"></i>
         <h3>Online Exam System</h3>
         <p>A full-featured digital testing portal engineered with high-precision counter timers and secure automatic result aggregation engines.</p>
-        <a href="exam.html" class="proj-btn">Run Project <i class="fas fa-arrow-right"></i></a>
+        <a href="exam.html" class="proj-btn">Launch Console <i class="fas fa-chevron-right"></i></a>
       </div>
+
       <div class="project-card">
-        <i class="fas fa-calculator"></i>
+        <i class="fas fa-microchip"></i>
         <h3>Smart Calculator</h3>
         <p>A high-precision arithmetic simulation web app designed with a clean, responsive UI layout for complex mathematical computations.</p>
-        <a href="calculator.html" class="proj-btn">Run Engine <i class="fas fa-arrow-right"></i></a>
+        <a href="calculator.html" class="proj-btn">Launch Engine <i class="fas fa-chevron-right"></i></a>
       </div>
+
       <div class="project-card">
-        <i class="fas fa-user-graduate"></i>
+        <i class="fas fa-cubes"></i>
         <h3>Student Management</h3>
         <p>An optimized enterprise database management simulation tracking student record states with perfect data integrity constraints.</p>
-        <a href="student.html" class="proj-btn">Run Console <i class="fas fa-arrow-right"></i></a>
+        <a href="student.html" class="proj-btn">Launch Core <i class="fas fa-chevron-right"></i></a>
       </div>
+
     </div>
   </section>
 
   <section id="presentation" class="presentation-section">
-    <h2 class="section-title">CSJMU Kanpur Academic Roadmap</h2>
-    <p style="text-align: center; color: #94a3b8; margin: -20px 0 40px 0; font-size: 1.1rem;">Interactive Tech Journey & Course Analysis</p>
+    <h2 class="section-title">CSJMU Kanpur Academic <span>Roadmap</span></h2>
+    <p style="text-align: center; color: #94a3b8; margin: -35px 0 45px 0; font-size: 1.1rem; font-weight: 500;">Interactive Tech Journey & Course Analysis</p>
+    
     <div class="iframe-container">
-      <iframe src="slides.html?v=responsive_perfect_v10" title="Sudeep Singh CSJMU Tech Presentation"></iframe>
+      <iframe src="slides.html?v=ultra_premium_final_v1" title="Sudeep Singh CSJMU Tech Presentation"></iframe>
     </div>
   </section>
 
   <footer>
     <div class="footer-links">
       <a href="https://github.com/sudeepsingh-ss" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
     </div>
-    <p>© 2026 Sudeep Thakur | Academic Portfolio. Built with absolute coding standard.</p>
+    <p>© 2026 Sudeep Thakur | Academic Portfolio. Developed with Next-Gen Coding Standard.</p>
   </footer>
 
 </body>
