@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sudeep Singh | Professional Academic Roadmap</title>
+  <title>Sudeep Singh | Academic Roadmap Frame</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* CSS Variables for Theme Toggle (Idea #5) */
     :root {
-      --bg-dark: #020617;
-      --card-bg: #0f172a;
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
       --primary: #38bdf8;
       --accent: #818cf8;
       --danger: #f43f5e;
       --text: #f8fafc;
       --text-muted: #94a3b8;
-      --glass: rgba(255, 255, 255, 0.05);
+      --glass: rgba(255, 255, 255, 0.04);
     }
 
     body.light-theme {
@@ -25,133 +24,108 @@
       --text-muted: #475569;
       --primary: #0284c7;
       --accent: #4f46e5;
-      --glass: rgba(0, 0, 0, 0.05);
+      --glass: rgba(0, 0, 0, 0.04);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; transition: background 0.3s, color 0.3s; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
     
     body {
       background: var(--bg-dark);
       color: var(--text);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      width: 100%;
+      height: 650px;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    /* Fixed Slider Wrapper Architecture to Prevent Overlap */
     .slider-wrapper {
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       position: relative;
       overflow: hidden;
-      background: var(--card-bg);
     }
 
     .slides-container {
       display: flex;
-      width: 1300%; /* 13 Slides total */
+      width: 1300%; /* 13 Slides Box layout */
       height: 100%;
       transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* Fixed slide width to exactly take 1 full frame width */
     .slide {
-      width: calc(100% / 13); 
+      width: calc(100% / 13);
       height: 100%;
-      padding: 40px 80px;
+      padding: 40px 60px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      position: relative;
       flex-shrink: 0;
+      position: relative;
     }
 
-    /* Background Glow Effect */
-    .slide::after {
-      content: '';
-      position: absolute;
-      top: -150px;
-      right: -150px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-      opacity: 0.1;
-      z-index: -1;
-    }
+    /* Structural Grid Fixes */
+    .intro-flex { display: flex; align-items: center; justify-content: space-between; gap: 40px; width: 100%; }
+    .intro-text { flex: 1; }
+    .intro-image { flex: 0 0 260px; }
+    .intro-image img { width: 250px; height: 320px; object-fit: cover; border-radius: 20px; border: 4px solid var(--primary); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
 
-    /* Intro Slide Layout */
-    .intro-flex { display: flex; align-items: center; justify-content: space-between; gap: 40px; width: 100%; max-width: 1000px; margin: 0 auto; }
-    .intro-text { flex: 1; text-align: left; }
-    .intro-image { flex: 0 0 320px; display: flex; justify-content: center; }
-    .intro-image img { 
-      width: 300px; height: 380px; object-fit: cover; border-radius: 24px; 
-      border: 4px solid var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    }
+    h1 { font-size: 2.8rem; line-height: 1.1; margin-bottom: 10px; font-weight: 800; background: linear-gradient(45deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    h2 { font-size: 1.9rem; color: var(--text); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; font-weight: 700; }
+    h3 { font-size: 1.25rem; color: var(--primary); margin-bottom: 8px; font-weight: 600; }
+    p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.5; }
 
-    h1 { font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; font-weight: 800; background: linear-gradient(45deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    h2 { font-size: 2.2rem; color: var(--text); margin-bottom: 25px; border-left: 6px solid var(--primary); padding-left: 20px; font-weight: 700; }
-    h3 { font-size: 1.4rem; color: var(--primary); margin-bottom: 10px; font-weight: 600; }
-    p { font-size: 1.15rem; color: var(--text-muted); line-height: 1.6; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .card-tile { background: var(--glass); padding: 20px; border-radius: 15px; border: 1px solid var(--glass); }
+    .card-tile i { font-size: 2rem; color: var(--primary); margin-bottom: 10px; display: block; }
 
-    /* Component Grids */
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .card-tile { background: var(--glass); padding: 25px; border-radius: 20px; border: 1px solid var(--glass); height: 100%; transition: 0.3s; }
-    .card-tile:hover { transform: translateY(-5px); border-color: var(--primary); }
-    .card-tile i { font-size: 2.2rem; color: var(--primary); margin-bottom: 15px; }
+    .danger-box { border-left: 5px solid var(--danger); background: rgba(244, 63, 94, 0.02); padding: 15px; border-radius: 0 12px 12px 0; margin-bottom: 12px; }
+    .danger-box strong { color: var(--danger); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; }
+    .ans { color: var(--primary); font-weight: 700; margin-top: 4px; }
 
-    /* Danger Zone MCQs (Idea #2) */
-    .danger-box { border-left: 5px solid var(--danger); background: rgba(244, 63, 94, 0.03); padding: 20px; border-radius: 0 15px 15px 0; margin-bottom: 15px; transition: 0.3s; }
-    .danger-box:hover { background: rgba(244, 63, 94, 0.08); transform: scale(1.01); }
-    .danger-box strong { color: var(--danger); font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; }
-    .ans { color: var(--primary); font-weight: 700; margin-top: 5px; }
-
-    /* Action Buttons */
     .run-btn {
-      display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; padding: 10px 20px;
-      background: var(--primary); color: #fff; text-decoration: none; border-radius: 10px;
-      font-weight: 700; transition: 0.3s; font-size: 0.9rem; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; padding: 8px 16px;
+      background: var(--primary); color: #000; text-decoration: none; border-radius: 8px;
+      font-weight: 700; font-size: 0.85rem; border: none; cursor: pointer;
     }
-    .run-btn:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4); }
 
-    /* Absolute Control UI Layout */
+    /* UI Overlay Positioning Fixes */
     .nav-btn {
       position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(15, 23, 42, 0.6); border: 1px solid var(--glass); color: var(--text);
-      width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex;
-      justify-content: center; align-items: center; font-size: 1.1rem; z-index: 10; transition: 0.3s;
+      background: rgba(15, 23, 42, 0.7); border: 1px solid var(--glass); color: var(--text);
+      width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex;
+      justify-content: center; align-items: center; z-index: 10; transition: 0.2s;
     }
-    .nav-btn:hover { background: var(--primary); color: #fff; transform: translateY(-50%) scale(1.1); }
-    .prev-btn { left: 25px; }
-    .next-btn { right: 25px; }
+    .prev-btn { left: 15px; }
+    .next-btn { right: 15px; }
+    .nav-btn:hover { background: var(--primary); color: #000; }
 
     .theme-toggle-btn {
-      position: absolute; top: 20px; right: 80px;
+      position: absolute; top: 15px; right: 75px;
       background: var(--glass); border: 1px solid var(--glass); color: var(--text);
-      padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: 700; z-index: 20; font-size: 0.85rem;
+      padding: 6px 12px; border-radius: 15px; cursor: pointer; font-weight: 700; z-index: 20; font-size: 0.8rem;
     }
 
     .pause-btn {
-      position: absolute; bottom: 20px; right: 30px;
+      position: absolute; bottom: 15px; right: 20px;
       background: var(--glass); border: none; color: var(--text);
-      width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 20; display: flex; justify-content: center; align-items: center;
+      width: 35px; height: 35px; border-radius: 50%; cursor: pointer; z-index: 20; display: flex; justify-content: center; align-items: center;
     }
 
     .dots-container {
-      position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%);
-      display: flex; gap: 10px; z-index: 10;
+      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px; z-index: 10;
     }
-    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--glass); cursor: pointer; transition: 0.3s; }
-    .dot.active { background: var(--primary); width: 25px; border-radius: 10px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--glass); cursor: pointer; }
+    .dot.active { background: var(--primary); width: 20px; border-radius: 8px; }
 
-    /* Charts UI */
-    .bar-chart { display: flex; flex-direction: column; gap: 15px; }
-    .bar-item { display: flex; align-items: center; gap: 20px; }
-    .bar-label { width: 220px; color: var(--text-muted); font-weight: 600; text-align: right; }
-    .bar-track { flex-grow: 1; height: 25px; background: var(--glass); border-radius: 5px; overflow: hidden; }
-    .bar-fill { height: 100%; background: var(--primary); display: flex; align-items: center; padding-left: 15px; font-weight: 700; color: #fff; font-size: 0.8rem; }
+    .bar-chart { display: flex; flex-direction: column; gap: 12px; }
+    .bar-item { display: flex; align-items: center; gap: 15px; }
+    .bar-label { width: 180px; color: var(--text-muted); font-weight: 600; text-align: right; font-size: 0.9rem; }
+    .bar-track { flex-grow: 1; height: 22px; background: var(--glass); border-radius: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--primary); display: flex; align-items: center; padding-left: 12px; font-weight: 700; color: #000; font-size: 0.75rem; }
   </style>
 </head>
 <body>
@@ -168,21 +142,21 @@
       <div class="slide">
         <div class="intro-flex">
           <div class="intro-text">
-            <span style="color: var(--primary); font-weight: 700; letter-spacing: 2px; font-size: 0.9rem;">WELCOME TO MY WORLD</span>
+            <span style="color: var(--primary); font-weight: 700; letter-spacing: 2px; font-size: 0.8rem; display:block; margin-bottom:5px;">WELCOME TO MY WORLD</span>
             <h1>Hi, I'm <br>Sudeep Singh</h1>
             <p>Computer Science Student & <br>Aspiring System Architect</p>
-            <button class="run-btn" style="margin-top: 25px;" onclick="moveSlide(1)">See My Roadmap <i class="fas fa-arrow-right"></i></button>
+            <button class="run-btn" style="margin-top: 15px;" onclick="moveSlide(1)">See My Roadmap <i class="fas fa-arrow-right"></i></button>
           </div>
           <div class="intro-image">
-            <img src="Sudeep.jpg" alt="Sudeep Singh Portrait">
+            <img src="Sudeep.jpg" alt="Sudeep Singh">
           </div>
         </div>
       </div>
 
       <div class="slide" style="text-align: center;">
-        <img src="https://www.csjmu.ac.in/wp-content/uploads/2021/04/logo.png" alt="CSJMU Logo" style="width: 110px; margin-bottom: 20px; filter: drop-shadow(0 0 10px var(--primary)); margin: 0 auto 20px auto; display: block;">
+        <img src="https://www.csjmu.ac.in/wp-content/uploads/2021/04/logo.png" alt="CSJMU Logo" style="width: 80px; margin: 0 auto 15px auto; display: block; filter: drop-shadow(0 0 8px var(--primary));">
         <h2>CSJMU Kanpur Affiliated</h2>
-        <div class="grid-2" style="text-align: left; max-width: 900px; margin: 0 auto;">
+        <div class="grid-2" style="text-align: left; max-width: 850px; margin: 0 auto;">
           <div class="card-tile">
             <h3>Academic Framework</h3>
             <p>छत्रपति शाहू जी महाराज यूनिवर्सिटी (Kanpur) के NEP-2020 सिलेबस पर आधारित संपूर्ण टेक्निकल विश्लेषण।</p>
@@ -262,7 +236,7 @@
 
       <div class="slide">
         <h2>Integrated Project Hub</h2>
-        <p style="margin-bottom: 20px;">इन प्रोजेक्ट्स को सिलेबस की थ्योरी के आधार पर लाइव डेवलप किया गया है:</p>
+        <p style="margin-bottom: 15px;">इन प्रोजेक्ट्स को सिलेबस की थ्योरी के आधार पर लाइव डेवलप किया गया है:</p>
         <div class="grid-3">
           <div class="card-tile">
             <h3>Online Exam</h3>
@@ -315,7 +289,7 @@
         <div class="danger-box">
           <strong>Web: JavaScript Closure</strong>
           <p>Q: एक फंक्शन जब अपनी बाहरी स्कोप के वेरिएबल्स को याद रखता है?</p>
-          <p class="ans">Ans: Closure Logic (Essential for state management).</p>
+          <p class="ans">Ans: Closure Logic.</p>
         </div>
         <div class="danger-box">
           <strong>Network: CRC Integrity</strong>
@@ -326,18 +300,18 @@
 
       <div class="slide">
         <h2>Technical Competency Growth</h2>
-        <svg viewBox="0 0 1000 300" style="width: 100%; height: 230px; padding: 10px; margin: 0 auto;">
-          <path d="M50,250 L200,210 L450,150 L650,90 L850,50 L950,20" fill="none" stroke="var(--primary)" stroke-width="5" stroke-linecap="round"/>
-          <circle cx="50" cy="250" r="8" fill="var(--accent)"/>
-          <circle cx="200" cy="210" r="8" fill="var(--accent)"/>
-          <circle cx="450" cy="150" r="8" fill="var(--accent)"/>
-          <circle cx="650" cy="90" r="8" fill="var(--accent)"/>
-          <circle cx="850" cy="50" r="8" fill="var(--accent)"/>
-          <circle cx="950" cy="20" r="8" fill="var(--accent)"/>
+        <svg viewBox="0 0 1000 260" style="width: 100%; height: 200px; margin: 0 auto;">
+          <path d="M50,220 L200,180 L450,130 L650,80 L850,50 L950,20" fill="none" stroke="var(--primary)" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="50" cy="220" r="7" fill="var(--accent)"/>
+          <circle cx="200" cy="180" r="7" fill="var(--accent)"/>
+          <circle cx="450" cy="130" r="7" fill="var(--accent)"/>
+          <circle cx="650" cy="80" r="7" fill="var(--accent)"/>
+          <circle cx="850" cy="50" r="7" fill="var(--accent)"/>
+          <circle cx="950" cy="20" r="7" fill="var(--accent)"/>
           <g fill="var(--text-muted)" font-size="14">
-            <text x="40" y="280">Sem I</text><text x="190" y="280">Sem II</text>
-            <text x="440" y="280">Sem III</text><text x="640" y="280">Sem IV</text>
-            <text x="840" y="280">Sem V</text><text x="920" y="280">Sem VI</text>
+            <text x="40" y="250">Sem I</text><text x="190" y="250">Sem II</text>
+            <text x="440" y="250">Sem III</text><text x="640" y="250">Sem IV</text>
+            <text x="840" y="250">Sem V</text><text x="920" y="250">Sem VI</text>
           </g>
         </svg>
       </div>
@@ -361,15 +335,14 @@
       </div>
 
       <div class="slide" style="text-align: center;">
-        <h1 style="font-size: 3.8rem;">Thank You!</h1>
-        <p style="font-size: 1.3rem;">Sudeep Singh | Professional Roadmap Completed</p>
-        <div style="margin-top: 30px; color: var(--primary); font-size: 1.5rem;">
+        <h1 style="font-size: 3.5rem;">Thank You!</h1>
+        <p style="font-size: 1.2rem;">Sudeep Singh | Professional Roadmap Completed</p>
+        <div style="margin-top: 20px; color: var(--primary); font-size: 1.3rem;">
           <i class="fab fa-github"></i> github.com/sudeepsingh-ss
         </div>
       </div>
 
     </div>
-
     <div class="dots-container" id="dotsContainer"></div>
   </div>
 
@@ -382,7 +355,6 @@
     let isPaused = false;
     let slideInterval;
 
-    // Create Navigation Dots dynamically
     for (let i = 0; i < totalSlides; i++) {
       const dot = document.createElement('div');
       dot.className = `dot ${i === 0 ? 'active' : ''}`;
@@ -392,7 +364,6 @@
     const dots = document.querySelectorAll('.dot');
 
     function updateSlider() {
-      // Moves exactly one slide width safely
       container.style.transform = `translateX(-${currentIdx * (100 / totalSlides)}%)`;
       dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentIdx);
