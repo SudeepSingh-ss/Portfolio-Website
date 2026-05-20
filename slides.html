@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSJMU Kanpur Syllabus Roadmap | Sudeep Singh</title>
+  <title>CSJMU Kanpur Ultra Portfolio Slideshow | Sudeep Singh</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -71,16 +71,65 @@
     h2 { font-size: 2.2rem; color: var(--text); margin-bottom: 30px; border-left: 5px solid var(--primary); padding-left: 20px; font-weight: 700; }
     h3 { font-size: 1.4rem; color: var(--primary); margin-bottom: 12px; font-weight: 600; }
     p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; }
-    ul { margin-left: 25px; color: var(--text-muted); line-height: 1.8; font-size: 1.1rem; }
-    span.highlight { color: var(--primary); font-weight: 600; }
-    span.danger-tag { background: rgba(244, 63, 94, 0.1); color: var(--danger); padding: 3px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(244, 63, 94, 0.2); }
-
+    
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-    .card-tile { background: rgba(255, 255, 255, 0.02); padding: 30px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.03); height: 100%; }
+    
+    .card-tile { 
+      background: rgba(255, 255, 255, 0.02); 
+      padding: 25px; 
+      border-radius: 15px; 
+      border: 1px solid rgba(255, 255, 255, 0.03); 
+      height: 100%; 
+      transition: all 0.3s ease;
+    }
+    .card-tile:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(56, 189, 248, 0.2);
+    }
     .card-tile i { font-size: 2.2rem; color: var(--primary); margin-bottom: 15px; }
-    .danger-box { border-left: 4px solid var(--danger); background: rgba(244, 63, 94, 0.02); padding: 18px; border-radius: 0 12px 12px 0; margin-bottom: 15px; }
+    
+    /* Project Run Button Styling */
+    .run-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+      padding: 6px 14px;
+      background: linear-gradient(45deg, #1e293b, #334155);
+      color: var(--primary);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      transition: 0.3s;
+    }
+    .run-btn:hover {
+      background: var(--primary);
+      color: #020617;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    }
+
+    /* Danger Box Ultra Hover Effects */
+    .danger-box { 
+      border-left: 4px solid var(--danger); 
+      background: rgba(244, 63, 94, 0.02); 
+      padding: 18px; 
+      border-radius: 0 12px 12px 0; 
+      margin-bottom: 15px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .danger-box:hover {
+      transform: scale(1.02) translateX(5px);
+      background: rgba(244, 63, 94, 0.05);
+      box-shadow: 0 10px 25px rgba(244, 63, 94, 0.15);
+      border-left-width: 6px;
+    }
     .danger-box strong { color: var(--danger); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; }
+    span.highlight { color: var(--primary); font-weight: 600; }
+    span.danger-tag { background: rgba(244, 63, 94, 0.1); color: var(--danger); padding: 3px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(244, 63, 94, 0.2); }
 
     .bar-chart { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
     .bar-item { display: flex; align-items: center; gap: 20px; }
@@ -88,21 +137,22 @@
     .bar-track { flex-grow: 1; height: 30px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden; }
     .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); display: flex; align-items: center; padding-left: 15px; font-weight: 700; color: #020617; font-size: 0.9rem; }
 
+    /* Controls Styling */
     .nav-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(30, 41, 59, 0.7);
+      background: rgba(15, 23, 42, 0.8);
       border: 1px solid rgba(255, 255, 255, 0.1);
       color: var(--text);
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       backdrop-filter: blur(5px);
       z-index: 10;
       transition: 0.3s;
@@ -110,6 +160,19 @@
     .nav-btn:hover { background: var(--primary); color: #020617; border-color: var(--primary); transform: translateY(-50%) scale(1.1); }
     .prev-btn { left: 20px; }
     .next-btn { right: 20px; }
+    
+    /* Play/Pause Button Positioning */
+    .pause-btn {
+      top: unset;
+      bottom: 12px;
+      right: 25px;
+      transform: none;
+      width: 36px;
+      height: 36px;
+      font-size: 0.9rem;
+      background: rgba(30, 41, 59, 0.9);
+    }
+    .pause-btn:hover { transform: scale(1.1); }
 
     .dots-container {
       position: absolute;
@@ -129,11 +192,12 @@
   <div class="slider-wrapper">
     <button class="nav-btn prev-btn" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
     <button class="nav-btn next-btn" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+    <button class="nav-btn pause-btn" id="pauseBtn" onclick="togglePlayPause()"><i class="fas fa-pause"></i></button>
 
     <div class="slides-container" id="slidesContainer">
       
       <div class="slide" style="text-align: center; justify-content: center;">
-        <span style="color: var(--accent); font-weight: 700; letter-spacing: 2px; margin-bottom: 10px; display: block;">CSJMU KANPUR </span>
+        <span style="color: var(--accent); font-weight: 700; letter-spacing: 2px; margin-bottom: 10px; display: block;">CSJMU KANPUR AFFILIATED</span>
         <h1>Syllabus Strategy &<br>Technical Architecture</h1>
         <p style="font-size: 1.3rem; color: var(--text); margin: 15px 0 10px 0;">B.Sc. Computer Application Roadmaps</p>
         <p style="letter-spacing: 3px; font-weight: 700; color: var(--primary); font-size: 0.9rem;">SUDEEP SINGH | ACADEMIC PORTFOLIO</p>
@@ -175,7 +239,7 @@
           <div class="card-tile">
             <i class="fas fa-code"></i>
             <h3>Semester III: C & Data Structures</h3>
-            <p>C Programming के साथ एडवांस Data Structures। पॉइंटर्स, लिंक्ड लिस्ट, स्टैक्स, क्यूज़ और ट्री ट्रैवर्सल एल्गोरिदम का गहन कोडिंग अभ्यास।</p>
+            <p>C Programming के साथ एडवांस Data Structures। पॉइंटर्स, लिंक्ด लिस्ट, स्टैक्स, क्यूज़ और ट्री ट्रैवर्सल एल्गोरिदम का गहन कोडिंग अभ्यास।</p>
           </div>
           <div class="card-tile">
             <i class="fas fa-microchip"></i>
@@ -219,19 +283,22 @@
 
       <div class="slide">
         <h2>Integrated Project Platform</h2>
-        <p style="margin-bottom: 25px;">इस पोर्टफोलियो वेबसाइट में शामिल तीनों मुख्य प्रोजेक्ट्स को सिलेबस की कसौटी पर कसकर लाइव डेवलप किया गया है:</p>
+        <p style="margin-bottom: 25px;">इस पोर्टफोलियो वेबसाइट में शामिल तीनों मुख्य प्रोजेक्ट्स को सिलेबस की कसौटी पर लाइव टेस्ट किया जा सकता है:</p>
         <div class="grid-3">
           <div class="card-tile">
             <h3>1. Online Exam System</h3>
-            <p>वेब टेक और जावास्क्रिप्ट लॉजिक का उपयोग करके टाइमर-बेस्ड परीक्षा प्रणाली का निर्माण।</p>
+            <p>वेब टेक और जावास्क्रिप्ट का उपयोग करके बनाया गया लाइव काउंटर टाइमर आधारित परीक्षा पोर्टल।</p>
+            <a href="exam.html" target="_parent" class="run-btn"><i class="fas fa-external-link-alt"></i> Run Project</a>
           </div>
           <div class="card-tile">
             <h3>2. Smart Calculator</h3>
-            <p>हाई-प्रिसिजन अर्थमैटिक ऑपरेशन्स के लिए डिजाइन किया गया क्लीन UI कंपोनेंट।</p>
+            <p>हाई-प्रिसिजन अर्थमैटिक ऑपरेशन्स के लिए डिजाइन किया गया क्लीन यूज़र इंटरफेस।</p>
+            <a href="calculator.html" target="_parent" class="run-btn"><i class="fas fa-external-link-alt"></i> Run Project</a>
           </div>
           <div class="card-tile">
             <h3>3. Student Management</h3>
-            <p>Java Object स्टेट और DBMS डेटा मॉडल को प्रदर्शित करने वाला कंसोल सिमुलेशन।</p>
+            <p>Java Object स्टेट और DBMS डेटा मॉडल को प्रदर्शित करने वाला कंसोल आर्किटेक्चर।</p>
+            <a href="student.html" target="_parent" class="run-btn"><i class="fas fa-external-link-alt"></i> Run Project</a>
           </div>
         </div>
       </div>
@@ -240,11 +307,11 @@
         <h2>Syllabus Danger MCQs (Part 1)</h2>
         <div class="danger-box">
           <strong>DBMS: Indexing Architecture <span class="danger-tag">Danger Level</span></strong>
-          <p>Q: कौन सा इंडेक्स डेटा फाइलों के फिजिकल ऑर्डर को निर्धारित करता है? <br>💡 <span class="highlight">लॉजिक: Clustered Index</span> (यह टेबल के डेटा को सॉर्ट करके स्टोर करता है, इसलिए प्रति टेबल सिर्फ एक हो सकता है)।</p>
+          <p>Q: कौन सा इंडेक्स डेटा फाइलों के फिजिकल ऑर्डर को निर्धारित करता है? <br>💡 <span class="highlight">लॉजिक: Clustered Index</span> (यह डेटा को सॉर्ट करके रखता है, इसलिए प्रति टेबल सिर्फ एक हो सकता है)।</p>
         </div>
         <div class="danger-box">
           <strong>Operating System: Deadlock Safe State <span class="danger-tag">Danger Level</span></strong>
-          <p>Q: बैंकर्स एल्गोरिदम का उपयोग किस कार्य के लिए किया जाता है? <br>💡 <span class="highlight">लॉजिक: Deadlock Avoidance</span> (यह सिस्टम रिसोर्स एलोकेशन ग्राफ को 'Safe State' में बनाए रखता है)।</p>
+          <p>Q: बैंकर्स एल्गोरिदम का उपयोग किस कार्य के लिए किया जाता है? <br>💡 <span class="highlight">लॉजिक: Deadlock Avoidance</span> (यह एलोकेशन ग्राफ को हमेशा 'Safe State' में बनाए रखता है)।</p>
         </div>
       </div>
 
@@ -252,7 +319,7 @@
         <h2>Syllabus Danger MCQs (Part 2)</h2>
         <div class="danger-box">
           <strong>Java: Memory Management <span class="danger-tag">Danger Level</span></strong>
-          <p>Q: जावा में सभी क्लास-लेवल ऑब्जेक्ट्स और इंस्टेंस वेरिएबल्स कहाँ स्टोर होते हैं? <br>💡 <span class="highlight">लॉजिक: Heap Area</span> (मेमोरी के हीप सेक्शन में डायनामिक एलोकेशन होता है, जबकि थ्रेड्स लोकल स्टैक का उपयोग करते हैं)।</p>
+          <p>Q: जावा में सभी क्लास-लेवल ऑब्जेक्ट्स और इंस्टेंस वेरिएबल्स कहाँ स्टोर होते हैं? <br>💡 <span class="highlight">लॉजिक: Heap Area</span> (मेमोरी के हीप सेक्शन में डायनामिक एलोकेशन होता है, जबकि लोकल थ्रेड्स स्टैक एरिया यूज़ करते हैं)।</p>
         </div>
         <div class="danger-box">
           <strong>Data Structures: Binary Trees <span class="danger-tag">Danger Level</span></strong>
@@ -314,10 +381,9 @@
 
       <div class="slide" style="text-align: center; justify-content: center;">
         <h1 style="font-size: 3rem;">Thank You!</h1>
-        <p style="font-size: 1.2rem; margin-top: 15px;">Sudeep Singh | CSJMU Kanpur </p>
+        <p style="font-size: 1.2rem; margin-top: 15px;">Sudeep Singh | CSJMU Kanpur Affiliated Program Roadmap</p>
         <div style="margin-top: 40px; display: flex; gap: 30px; justify-content: center; color: var(--primary);">
           <span><i class="fab fa-github"></i> github.com/sudeepsingh-ss</span>
-          <span><i class="fas fa-envelope"></i> sudeepsikarwar3@gmail.com</span>
         </div>
       </div>
 
@@ -329,8 +395,11 @@
   <script>
     const container = document.getElementById('slidesContainer');
     const dotsContainer = document.getElementById('dotsContainer');
+    const pauseBtn = document.getElementById('pauseBtn');
     const totalSlides = 13;
     let currentIdx = 0;
+    let isPaused = false;
+    let slideInterval;
 
     for (let i = 0; i < totalSlides; i++) {
       const dot = document.createElement('div');
@@ -361,10 +430,26 @@
       updateSlider();
     }
 
-    // Right to Left auto sliding execution every 6.5 seconds
-    setInterval(() => {
-      moveSlide(1);
-    }, 6500);
+    function startTimer() {
+      slideInterval = setInterval(() => {
+        moveSlide(1);
+      }, 6500);
+    }
+
+    function togglePlayPause() {
+      if (isPaused) {
+        startTimer();
+        pauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        isPaused = false;
+      } else {
+        clearInterval(slideInterval);
+        pauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        isPaused = true;
+      }
+    }
+
+    // Initialize auto-sliding on load
+    startTimer();
   </script>
 </body>
 </html>
