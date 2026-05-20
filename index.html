@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sudeep Thakur | Ultra 3D Cyber Portfolio & Roadmap</title>
+  <title>Sudeep Thakur | Cyber Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   
@@ -37,8 +37,8 @@
     /* Dynamic Mesh Background Grid */
     body::before {
       content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
-                  radial-gradient(circle at 15% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 50%);
+      background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 15% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
       z-index: -1;
     }
 
@@ -47,11 +47,13 @@
       background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       padding: 20px 40px; border-bottom: 1px solid var(--glass-border); 
       position: sticky; top: 0; z-index: 100;
+      animation: slideDown 0.8s ease;
     }
+    @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
     body.light-theme header { background: rgba(255, 255, 255, 0.7); }
     
     .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .logo-text { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .logo-text { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
     .nav-links { display: flex; align-items: center; gap: 25px; }
     .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 0.95rem; }
     .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--neon-glow); }
@@ -64,23 +66,25 @@
     }
     .theme-toggle-btn:hover { border-color: var(--primary); box-shadow: 0 0 12px var(--neon-glow); }
 
-    /* Hero Section with Fluid Layout */
-    .hero { max-width: 1200px; margin: 0 auto; padding: 90px 20px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    /* FIRST TIME WALA ULTRA-PREMIUM HERO SECTION */
+    .hero { max-width: 1200px; margin: 0 auto; padding: 100px 20px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
     .hero-content { flex: 1; animation: fadeInUp 1s ease-out; }
-    .hero-content h1 { font-size: 3.8rem; margin-bottom: 15px; font-weight: 800; line-height: 1.1; }
+    
+    .hero-content h1 { font-size: 3.8rem; margin-bottom: 15px; font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
     .hero-content h1 span { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero-content p { color: var(--text-muted); font-size: 1.25rem; margin-bottom: 35px; max-width: 600px; }
     
     .hero-btn { 
-      display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; 
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; 
       padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; 
-      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.25); transition: all 0.4s ease; 
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3); transition: all 0.4s ease; 
     }
     .hero-btn:hover { transform: translateY(-4px); box-shadow: 0 15px 35px var(--neon-glow), 0 0 15px var(--primary); }
 
     /* Premium Project Tech Cards Layout */
     .projects-section { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-    .section-title { font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 50px; }
+    .section-title { font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 50px; letter-spacing: -0.5px; }
     .section-title span { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
@@ -91,13 +95,11 @@
     .project-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 20px 40px -15px var(--neon-glow); }
     .project-card i { font-size: 2.8rem; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 25px; display: block; }
     .project-card h3 { font-size: 1.5rem; margin-bottom: 12px; font-weight: 700; }
-    .project-card p { color: var(--text-muted); margin-bottom: 25px; }
-    .proj-btn { color: var(--primary); text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; }
+    .project-card p { color: var(--text-muted); margin-bottom: 25px; font-size: 1rem; }
+    .proj-btn { color: var(--primary); text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; transition: 0.2s; }
     .project-card:hover .proj-btn { gap: 14px; color: var(--accent); }
 
-    /* ===================================================
-       ULTRA 3D PRESENTATION ENGINE (EMBEDDED NATIVE)
-       =================================================== */
+    /* EMBEDDED CINEMATIC PRESENTATION ENGINE */
     .presentation-section { background: rgba(9, 13, 22, 0.4); padding: 80px 20px; border-top: 1px solid var(--glass-border); }
     body.light-theme .presentation-section { background: rgba(0,0,0,0.02); }
 
@@ -213,8 +215,8 @@
   <section id="home" class="hero">
     <div class="hero-content">
       <h1>Hi, I'm <br><span>Sudeep Thakur</span></h1>
-      <p>B.Sc. Computer Science Student. High-fidelity architectural presentation module mapped perfectly to CSJMU curriculum parameters.</p>
-      <a href="#projects" class="hero-btn">Explore My Systems <i class="fas fa-arrow-right"></i></a>
+      <p>A passionate Computer Science student focusing on developing clean code structures, responsive architectures, and efficient system designs framework.</p>
+      <a href="#projects" class="hero-btn">Explore My System <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
 
@@ -351,7 +353,7 @@
         <div class="slide">
           <h2>Integrated Project Hub</h2>
           <p style="margin-bottom: 15px;">इन प्रोजेक्ट्स को सिलेबस की थ्योरी के आधार पर लाइव डेवलप किया गया है:</p>
-                    <div class="grid-3">
+          <div class="grid-3">
             <div class="card-tile" style="text-align: center;">
               <h3>Online Exam</h3>
               <p style="font-size:0.9rem; margin-bottom:10px;">Timer portal for MCQs.</p>
@@ -374,7 +376,7 @@
           <h2>Danger MCQ Zone: DBMS & OS</h2>
           <div class="danger-box">
             <strong><i class="fas fa-triangle-exclamation"></i> DBMS Indexing Logic</strong>
-            <p>Q: कौन सा इंडेक्स टेबल के फिजिकल ऑर्डर को तय करता है?</p>
+            <p>Q: कौन सा इंडेक्स टेबल के फिजिकल ORDER को तय करता है?</p>
             <p class="ans"><i class="fas fa-circle-check"></i> Clustered Index (One per table).</p>
           </div>
           <div class="danger-box">
