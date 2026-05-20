@@ -3,116 +3,353 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sudeep Singh Portfolio</title>
+  <title>Sudeep Singh | Portfolio</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial;
+    /* CSS Variables for Professional Look */
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-color: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary-color: #38bdf8;
+      --accent-color: #818cf8;
     }
 
-    body{
-      background:#f4f6f9;
-      color:#222;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
     }
 
-    header{
-      background:#0f172a;
-      color:white;
-      text-align:center;
-      padding:40px;
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
     }
 
-    nav{
-      background:#1e293b;
-      padding:15px;
-      text-align:center;
+    /* Elegant Navigation Bar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    nav a{
-      color:white;
-      text-decoration:none;
-      margin:10px;
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      letter-spacing: 1px;
     }
 
-    section{
-      padding:40px 20px;
-      max-width:900px;
-      margin:auto;
+    nav .nav-links a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin-left: 30px;
+      font-weight: 500;
+      transition: 0.3s;
     }
 
-    .card{
-      background:white;
-      padding:20px;
-      border-radius:10px;
-      margin-top:20px;
-      box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    nav .nav-links a:hover {
+      color: var(--primary-color);
     }
 
-    footer{
-      background:#0f172a;
-      color:white;
-      text-align:center;
-      padding:20px;
-      margin-top:30px;
+    /* Hero Section with Smooth Gradient & Intro */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      font-weight: 800;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+    }
+
+    /* Sections Common Styling */
+    section {
+      padding: 100px 10%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section h2 {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    /* About Section */
+    .about-content {
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      line-height: 1.8;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* Animated Grid for Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      padding: 30px 20px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .skill-card i {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary-color);
+      box-shadow: 0 10px 20px rgba(56, 189, 248, 0.1);
+    }
+
+    /* Projects Grid with Hover Zoom Effect */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card h3 {
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+
+    .project-card p {
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .project-card .project-link {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .project-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    /* Contact Details with Icons */
+    .contact-info {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.1rem;
+    }
+
+    .contact-item i {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    /* Footer */
+    footer {
+      background: #090d16;
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      nav { padding: 20px 5%; }
+      .nav-links { display: none; } /* Simplifies mobile view */
+      .hero h1 { font-size: 2.5rem; }
+      section { padding: 60px 5%; }
     }
   </style>
 </head>
-
 <body>
 
-<header>
-  <h1>Sudeep Singh</h1>
-  <p>B.Sc. Computer Application Student | Java Learner | SSC Aspirant</p>
-</header>
+  <nav>
+    <div class="logo">SUDEEP.</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-<nav>
-  <a href="#">About</a>
-  <a href="#">Skills</a>
-  <a href="#">Projects</a>
-  <a href="#">Contact</a>
-</nav>
-
-<section>
-  <div class="card">
-    <h2>About Me</h2>
-    <p>
-      I am a B.Sc. Computer Application student interested in Java programming,
-      web development, and technical skills.
-    </p>
+  <div class="hero">
+    <h1 data-aos="fade-down" data-aos-duration="1000">Hi, I'm Sudeep Singh</h1>
+    <p data-aos="fade-up" data-aos-duration="1200">B.Sc. Computer Application Student & Tech Enthusiast. Building modern web experiences and exploring backend development with Java.</p>
+    <a href="#contact" class="btn" data-aos="zoom-in" data-aos-duration="1500">Get In Touch</a>
   </div>
 
-  <div class="card">
-    <h2>Skills</h2>
-    <ul>
-      <li>Java Programming</li>
-      <li>HTML & CSS</li>
-      <li>DBMS</li>
-      <li>Operating Systems</li>
-    </ul>
-  </div>
+  <section id="about">
+    <h2 data-aos="fade-up">About Me</h2>
+    <div class="about-content" data-aos="fade-up" data-aos-delay="200">
+      <p>मैं कंप्यूटर एप्लीकेशन का छात्र हूँ और मुझे नई टेक्नोलॉजीज़ सीखने का गहरा शौक है। कोर प्रोग्रामिंग में मेरी मज़बूत पकड़ <strong>Java Development</strong> में है, और इसके साथ ही मैं आधुनिक वेब डिज़ाइनिंग (HTML, CSS, Modern UI) सीख रहा हूँ। मेरा लक्ष्य हमेशा साफ़, सिक्योर और यूज़र-फ्रेंडली कोड लिखना है।</p>
+    </div>
+  </section>
 
-  <div class="card">
-    <h2>Projects</h2>
-    <ul>
-      <li>Portfolio Website</li>
-      <li>Calculator Project</li>
-      <li>Student Management System</li>
-    </ul>
-  </div>
+  <section id="skills">
+    <h2 data-aos="fade-up">My Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card" data-aos="flip-left" data-aos-delay="100">
+        <i class="fab fa-java"></i>
+        <h3>Java</h3>
+      </div>
+      <div class="skill-card" data-aos="flip-left" data-aos-delay="200">
+        <i class="fab fa-html5"></i>
+        <h3>HTML5 & CSS3</h3>
+      </div>
+      <div class="skill-card" data-aos="flip-left" data-aos-delay="300">
+        <i class="fas fa-database"></i>
+        <h3>DBMS / SQL</h3>
+      </div>
+      <div class="skill-card" data-aos="flip-left" data-aos-delay="400">
+        <i class="fas fa-laptop-code"></i>
+        <h3>Web Design</h3>
+      </div>
+    </div>
+  </section>
 
-  <div class="card">
-    <h2>Contact</h2>
-    <p>Email: sudeepsikarwar3@gmail.com</p>
-    <p>Location: Agra, India</p>
-  </div>
-</section>
+  <section id="projects">
+    <h2 data-aos="fade-up">Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <h3><i class="fas fa-globe"></i> Premium Portfolio</h3>
+        <p>यह मेरी खुद की बनाई हुई रेस्पॉन्सिव पोर्टफोलियो वेबसाइट है, जिसमें एडवांस CSS ग्रिड, फ्लेक्सबॉक्स और स्क्रॉल एनिमेशन्स का यूज़ हुआ है।</p>
+        <a href="#" class="project-link">View Code →</a>
+      </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <h3><i class="fas fa-calculator"></i> Smart Calculator</h3>
+        <p>एक इंटरैक्टिव कैलकुलेटर प्रोजेक्ट जो वेब पर मैथमैटिकल कैलकुलेशंस को तेज़ी और सही तरीके से हल करता है।</p>
+        <a href="#" class="project-link">View Code →</a>
+      </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+        <h3><i class="fas fa-users-cog"></i> Student System</h3>
+        <p>Java और DBMS पर आधारित एक कंसोल/वेब प्रोजेक्ट, जिसका उपयोग छात्रों का डेटा रिकॉर्ड और मैनेज करने के लिए किया जाता है।</p>
+        <a href="#" class="project-link">View Code →</a>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  <p>© 2026 Sudeep Singh</p>
-</footer>
+  <section id="contact">
+    <h2 data-aos="fade-up">Contact Me</h2>
+    <div class="contact-info" data-aos="zoom-in">
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <span>yourmail@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Agra, Uttar Pradesh, India</span>
+      </div>
+    </div>
+  </section>
 
+  <footer>
+    <p>© 2026 Sudeep Singh. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true /* एलीमेंट पर स्क्रॉल करने पर एनिमेशन केवल एक बार होगा */
+    });
+  </script>
 </body>
 </html>
