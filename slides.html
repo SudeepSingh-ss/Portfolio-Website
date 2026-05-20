@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Premium Tech Roadmap Slideshow | Sudeep Singh</title>
+  <title>CSJMU Kanpur Syllabus Roadmap | Sudeep Singh</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -16,7 +16,7 @@
       --text-muted: #94a3b8;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
     
     body {
       background: var(--bg-dark);
@@ -28,7 +28,6 @@
       overflow: hidden;
     }
 
-    /* Slider Main Window */
     .slider-wrapper {
       width: 100%;
       max-width: 1100px;
@@ -41,17 +40,15 @@
       border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    /* Outer Container for Slides */
     .slides-container {
       display: flex;
-      width: 1300%; /* 13 Slides = 1300% width */
+      width: 1300%; /* 13 Slides */
       height: 100%;
       transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
     }
 
-    /* Individual Slide Frame */
     .slide {
-      width: 7.692%; /* 100% / 13 slides */
+      width: 7.692%; 
       height: 100%;
       padding: 60px;
       display: flex;
@@ -60,7 +57,6 @@
       position: relative;
     }
 
-    /* Decorative Background Graphics inside Slides */
     .slide::before {
       content: '';
       position: absolute;
@@ -71,8 +67,7 @@
       background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
     }
 
-    /* Typography inside Presentation */
-    h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; font-weight: 800; background: linear-gradient(45deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    h1 { font-size: 3.2rem; line-height: 1.2; margin-bottom: 20px; font-weight: 800; background: linear-gradient(45deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     h2 { font-size: 2.2rem; color: var(--text); margin-bottom: 30px; border-left: 5px solid var(--primary); padding-left: 20px; font-weight: 700; }
     h3 { font-size: 1.4rem; color: var(--primary); margin-bottom: 12px; font-weight: 600; }
     p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; }
@@ -80,22 +75,19 @@
     span.highlight { color: var(--primary); font-weight: 600; }
     span.danger-tag { background: rgba(244, 63, 94, 0.1); color: var(--danger); padding: 3px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(244, 63, 94, 0.2); }
 
-    /* Layout Components */
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-    .card-tile { background: rgba(255, 255, 255, 0.02); padding: 30px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.03); height: 100%; transition: 0.3s; }
+    .card-tile { background: rgba(255, 255, 255, 0.02); padding: 30px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.03); height: 100%; }
     .card-tile i { font-size: 2.2rem; color: var(--primary); margin-bottom: 15px; }
-    .danger-box { border-left: 4px solid var(--danger); background: rgba(244, 63, 94, 0.02); padding: 20px; border-radius: 0 12px 12px 0; margin-bottom: 15px; }
-    .danger-box strong { color: var(--danger); font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; }
+    .danger-box { border-left: 4px solid var(--danger); background: rgba(244, 63, 94, 0.02); padding: 18px; border-radius: 0 12px 12px 0; margin-bottom: 15px; }
+    .danger-box strong { color: var(--danger); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; }
 
-    /* Performance Bars */
     .bar-chart { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
     .bar-item { display: flex; align-items: center; gap: 20px; }
     .bar-label { width: 220px; color: var(--text-muted); font-weight: 600; text-align: right; }
     .bar-track { flex-grow: 1; height: 30px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden; }
     .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); display: flex; align-items: center; padding-left: 15px; font-weight: 700; color: #020617; font-size: 0.9rem; }
 
-    /* Navigation Controllers (Arrows) */
     .nav-btn {
       position: absolute;
       top: 50%;
@@ -119,7 +111,6 @@
     .prev-btn { left: 20px; }
     .next-btn { right: 20px; }
 
-    /* Navigation Bottom Indicator Dots */
     .dots-container {
       position: absolute;
       bottom: 25px;
@@ -129,14 +120,7 @@
       gap: 10px;
       z-index: 10;
     }
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      cursor: pointer;
-      transition: 0.3s;
-    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); cursor: pointer; transition: 0.3s; }
     .dot.active { background: var(--primary); width: 25px; border-radius: 10px; }
   </style>
 </head>
@@ -149,8 +133,9 @@
     <div class="slides-container" id="slidesContainer">
       
       <div class="slide" style="text-align: center; justify-content: center;">
+        <span style="color: var(--accent); font-weight: 700; letter-spacing: 2px; margin-bottom: 10px; display: block;">CSJMU KANPUR AFFILIATED</span>
         <h1>Syllabus Strategy &<br>Technical Architecture</h1>
-        <p style="font-size: 1.3rem; color: var(--text); margin: 20px 0 10px 0;">B.Sc. Computer Application Roadmaps</p>
+        <p style="font-size: 1.3rem; color: var(--text); margin: 15px 0 10px 0;">B.Sc. Computer Application Roadmaps</p>
         <p style="letter-spacing: 3px; font-weight: 700; color: var(--primary); font-size: 0.9rem;">SUDEEP SINGH | ACADEMIC PORTFOLIO</p>
       </div>
 
@@ -158,12 +143,12 @@
         <h2>NEP 2020 Course Mapping</h2>
         <div class="grid-2">
           <div>
-            <h3>Syllabus Compliance</h3>
-            <p>यह प्रेजेंटेशन उत्तर प्रदेश राज्य विश्वविद्यालयों के न्यूनतम साझा पाठ्यक्रम (NEP-2020) के आधार पर कंप्यूटर एप्लीकेशन थ्योरी और कोर लैब्स का संपूर्ण विश्लेषण प्रस्तुत करती है।</p>
+            <h3>CSJMU Kanpur Framework</h3>
+            <p>यह प्रेजेंटेशन छत्रपति शाहू जी महाराज यूनिवर्सिटी (CSJMU) के न्यूनतम साझा पाठ्यक्रम (NEP-2020) के आधार पर थ्योरी और कोर लैब्स का लाइव विश्लेषण प्रस्तुत करती है।</p>
           </div>
           <div class="card-tile">
             <h3>Structure Design</h3>
-            <p>फर्स्ट ईयर बेसिक्स से लेकर फाइनल ईयर एडवांस सॉफ्टवेयर इंजीनियरिंग तक के मुख्य तकनीकी स्तंभों (Technical Pillars) को इसमें शामिल किया गया है।</p>
+            <p>फर्स्ट ईयर फंडामेंटल्स से लेकर 6th सेमेस्टर तक के मुख्य यूनिवर्सिटी सिलेबस पैरामीटर्स को इसमें शामिल किया गया है।</p>
           </div>
         </div>
       </div>
@@ -174,12 +159,12 @@
           <div class="card-tile">
             <i class="fab fa-python"></i>
             <h3>Semester I: Python Logic</h3>
-            <p>Computer Fundamentals के साथ Problem Solving using Python। डेटा स्ट्रक्चर के बुनियादी लॉजिक और ऑब्जेक्ट-ओरिएंटेड थ्योरी की शुरुआत।</p>
+            <p>Computer Fundamentals के साथ Problem Solving using Python। डेटा स्ट्रक्चर के बुनियादी लॉजिक और ऑब्जेक्ट-ओरिएंटेड कोडिंग की शुरुआत।</p>
           </div>
           <div class="card-tile">
             <i class="fas fa-database"></i>
             <h3>Semester II: DBMS Core</h3>
-            <p>Database Management Systems (DBMS)। रिलेशनल डेटा मॉडल, SQL क्वेरीज़, नॉर्मलाइजेशन स्कीमा और एंटिटी-रिलेशनशिप आरेख (E-R Diagrams)।</p>
+            <p>Database Management Systems (DBMS)। रिलेशनल डेटा मॉडल, SQL एडवांस क्वेरीज़, नॉर्मलाइजेशन स्कीमा और E-R Diagrams।</p>
           </div>
         </div>
       </div>
@@ -205,11 +190,11 @@
         <div class="grid-2">
           <div>
             <h3>Semester V: Java & Networks</h3>
-            <p>जावा प्रोग्रामिंग की शुरुआत। JVM आर्किटेक्चर, मल्टी-थ्रेडिंग, एक्सेप्शन हैंडलिंग के साथ-साथ कंप्यूटर नेटवर्क के थ्योरी कांसेप्ट्स का समावेश।</p>
+            <p>जावा प्रोग्रामिंग कोर। JVM आर्किटेक्चर, मल्टी-थ्रेडिंग, एक्सेप्शन हैंडलिंग के साथ-साथ कंप्यूटर नेटवर्क थ्योरी कांसेप्ट्स का समावेश।</p>
           </div>
           <div class="card-tile">
             <h3>Advanced Core Labs</h3>
-            <p>इंडस्ट्री ओरिएंटेड जावा लैब्स और सॉकेट प्रोग्रामिंग सिमुलेशन जो छात्रों को रियल-टाइम कंपाइलर प्रोजेक्ट्स के लिए तैयार करते हैं।</p>
+            <p>इंडस्ट्री ओरिएंटेड जावा लैब्स और सॉकेट प्रोग्रामिंग सिमुलेशन जो कंपाइलर प्रोजेक्ट्स के लिए कोर बेसिक्स मजबूत करते हैं।</p>
           </div>
         </div>
       </div>
@@ -329,7 +314,7 @@
 
       <div class="slide" style="text-align: center; justify-content: center;">
         <h1 style="font-size: 3rem;">Thank You!</h1>
-        <p style="font-size: 1.2rem; margin-top: 15px;">Sudeep Singh | Professional Academic Roadmap Completed</p>
+        <p style="font-size: 1.2rem; margin-top: 15px;">Sudeep Singh | CSJMU Kanpur Affiliated Program Roadmap</p>
         <div style="margin-top: 40px; display: flex; gap: 30px; justify-content: center; color: var(--primary);">
           <span><i class="fab fa-github"></i> github.com/sudeepsingh-ss</span>
           <span><i class="fas fa-envelope"></i> mail@example.com</span>
@@ -347,7 +332,6 @@
     const totalSlides = 13;
     let currentIdx = 0;
 
-    // Dynamically create bottom indicators dots
     for (let i = 0; i < totalSlides; i++) {
       const dot = document.createElement('div');
       dot.className = `dot ${i === 0 ? 'active' : ''}`;
@@ -377,10 +361,10 @@
       updateSlider();
     }
 
-    // Optional: Auto-slide transition every 6 seconds from right to left
+    // Right to Left auto sliding execution every 6.5 seconds
     setInterval(() => {
       moveSlide(1);
-    }, 6000);
+    }, 6500);
   </script>
 </body>
 </html>
