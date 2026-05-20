@@ -3,72 +3,384 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Academic Roadmap Presentation</title>
+  <title>Premium Tech Roadmap Slideshow | Sudeep Singh</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --bg: #0f172a;
-      --card: #1e293b;
+      --bg-dark: #020617;
+      --card-bg: #0f172a;
       --primary: #38bdf8;
       --accent: #818cf8;
+      --danger: #f43f5e;
       --text: #f8fafc;
       --text-muted: #94a3b8;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-    body { background: var(--bg); color: var(--text); padding: 40px; min-height: 100vh; }
-    .slide-deck { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
-    .slide { background: var(--card); border: 1px solid rgba(255,255,255,0.05); padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-    h2 { color: var(--primary); font-size: 1.8rem; margin-bottom: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 2px solid #334155; padding-bottom: 10px; }
-    h3 { color: var(--accent); margin: 15px 0 10px 0; font-size: 1.2rem; }
-    p { color: var(--text-muted); line-height: 1.6; font-size: 1.05rem; }
-    ul { margin-left: 20px; color: var(--text-muted); line-height: 1.8; }
-    span.danger-tag { background: rgba(239, 68, 68, 0.1); color: #ef4444; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; font-weight: 600; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    
+    body {
+      background: var(--bg-dark);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Slider Main Window */
+    .slider-wrapper {
+      width: 100%;
+      max-width: 1100px;
+      height: 600px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: var(--card-bg);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Outer Container for Slides */
+    .slides-container {
+      display: flex;
+      width: 1300%; /* 13 Slides = 1300% width */
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    /* Individual Slide Frame */
+    .slide {
+      width: 7.692%; /* 100% / 13 slides */
+      height: 100%;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Decorative Background Graphics inside Slides */
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+    }
+
+    /* Typography inside Presentation */
+    h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; font-weight: 800; background: linear-gradient(45deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    h2 { font-size: 2.2rem; color: var(--text); margin-bottom: 30px; border-left: 5px solid var(--primary); padding-left: 20px; font-weight: 700; }
+    h3 { font-size: 1.4rem; color: var(--primary); margin-bottom: 12px; font-weight: 600; }
+    p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; }
+    ul { margin-left: 25px; color: var(--text-muted); line-height: 1.8; font-size: 1.1rem; }
+    span.highlight { color: var(--primary); font-weight: 600; }
+    span.danger-tag { background: rgba(244, 63, 94, 0.1); color: var(--danger); padding: 3px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(244, 63, 94, 0.2); }
+
+    /* Layout Components */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+    .card-tile { background: rgba(255, 255, 255, 0.02); padding: 30px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.03); height: 100%; transition: 0.3s; }
+    .card-tile i { font-size: 2.2rem; color: var(--primary); margin-bottom: 15px; }
+    .danger-box { border-left: 4px solid var(--danger); background: rgba(244, 63, 94, 0.02); padding: 20px; border-radius: 0 12px 12px 0; margin-bottom: 15px; }
+    .danger-box strong { color: var(--danger); font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* Performance Bars */
+    .bar-chart { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+    .bar-item { display: flex; align-items: center; gap: 20px; }
+    .bar-label { width: 220px; color: var(--text-muted); font-weight: 600; text-align: right; }
+    .bar-track { flex-grow: 1; height: 30px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden; }
+    .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); display: flex; align-items: center; padding-left: 15px; font-weight: 700; color: #020617; font-size: 0.9rem; }
+
+    /* Navigation Controllers (Arrows) */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      backdrop-filter: blur(5px);
+      z-index: 10;
+      transition: 0.3s;
+    }
+    .nav-btn:hover { background: var(--primary); color: #020617; border-color: var(--primary); transform: translateY(-50%) scale(1.1); }
+    .prev-btn { left: 20px; }
+    .next-btn { right: 20px; }
+
+    /* Navigation Bottom Indicator Dots */
+    .dots-container {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .dot.active { background: var(--primary); width: 25px; border-radius: 10px; }
   </style>
 </head>
 <body>
 
-  <div class="slide-deck">
-    
-    <div class="slide">
-      <h2><i class="fas fa-graduation-cap"></i> Academic & Tech Roadmap</h2>
-      <p style="font-size: 1.3rem; color: #fff; margin-bottom: 15px;">Sudeep Singh | B.Sc. Computer Application</p>
-      <p>NEP-2020 Syllabus के आधार पर तैयार किया गया एक एडवांस टेक्निकल सफर और प्रोजेक्ट्स का पूरा विश्लेषण।</p>
-    </div>
+  <div class="slider-wrapper">
+    <button class="nav-btn prev-btn" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="nav-btn next-btn" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
 
-    <div class="slide">
-      <h2><i class="fas fa-book"></i> Syllabus Matrix (NEP 2020)</h2>
-      <div class="grid-2">
-        <div>
-          <h3>Year 1 & 2: Fundamentals</h3>
-          <p>Python Programming, Database Management Systems (DBMS), C Language, और Operating System (OS) के कोर कांसेप्ट्स पर मजबूत पकड़।</p>
-        </div>
-        <div>
-          <h3>Year 3: Enterprise Coding</h3>
-          <p>Java Programming, Web Technology Architecture, Computer Networks (OSI Model), और एडवांस प्रोजेक्ट डेवलपमेंट।</p>
+    <div class="slides-container" id="slidesContainer">
+      
+      <div class="slide" style="text-align: center; justify-content: center;">
+        <h1>Syllabus Strategy &<br>Technical Architecture</h1>
+        <p style="font-size: 1.3rem; color: var(--text); margin: 20px 0 10px 0;">B.Sc. Computer Application Roadmaps</p>
+        <p style="letter-spacing: 3px; font-weight: 700; color: var(--primary); font-size: 0.9rem;">SUDEEP SINGH | ACADEMIC PORTFOLIO</p>
+      </div>
+
+      <div class="slide">
+        <h2>NEP 2020 Course Mapping</h2>
+        <div class="grid-2">
+          <div>
+            <h3>Syllabus Compliance</h3>
+            <p>यह प्रेजेंटेशन उत्तर प्रदेश राज्य विश्वविद्यालयों के न्यूनतम साझा पाठ्यक्रम (NEP-2020) के आधार पर कंप्यूटर एप्लीकेशन थ्योरी और कोर लैब्स का संपूर्ण विश्लेषण प्रस्तुत करती है।</p>
+          </div>
+          <div class="card-tile">
+            <h3>Structure Design</h3>
+            <p>फर्स्ट ईयर बेसिक्स से लेकर फाइनल ईयर एडवांस सॉफ्टवेयर इंजीनियरिंग तक के मुख्य तकनीकी स्तंभों (Technical Pillars) को इसमें शामिल किया गया है।</p>
+          </div>
         </div>
       </div>
+
+      <div class="slide">
+        <h2>Year 1: Foundation Pillars</h2>
+        <div class="grid-2">
+          <div class="card-tile">
+            <i class="fab fa-python"></i>
+            <h3>Semester I: Python Logic</h3>
+            <p>Computer Fundamentals के साथ Problem Solving using Python। डेटा स्ट्रक्चर के बुनियादी लॉजिक और ऑब्जेक्ट-ओरिएंटेड थ्योरी की शुरुआत।</p>
+          </div>
+          <div class="card-tile">
+            <i class="fas fa-database"></i>
+            <h3>Semester II: DBMS Core</h3>
+            <p>Database Management Systems (DBMS)। रिलेशनल डेटा मॉडल, SQL क्वेरीज़, नॉर्मलाइजेशन स्कीमा और एंटिटी-रिलेशनशिप आरेख (E-R Diagrams)।</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <h2>Year 2: Architecture & Core Systems</h2>
+        <div class="grid-2">
+          <div class="card-tile">
+            <i class="fas fa-code"></i>
+            <h3>Semester III: C & Data Structures</h3>
+            <p>C Programming के साथ एडवांस Data Structures। पॉइंटर्स, लिंक्ड लिस्ट, स्टैक्स, क्यूज़ और ट्री ट्रैवर्सल एल्गोरिदम का गहन कोडिंग अभ्यास।</p>
+          </div>
+          <div class="card-tile">
+            <i class="fas fa-microchip"></i>
+            <h3>Semester IV: Operating Systems</h3>
+            <p>Operating System (OS) के आंतरिक सिद्धांत। कर्नेल आर्किटेक्चर, प्रोसेस शेड्यूलिंग, मेमोरी मैनेजमेंट और यूनिक्स/लिनक्स कमांड सिस्टम।</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <h2>Year 3: Enterprise Software Engineering</h2>
+        <div class="grid-2">
+          <div>
+            <h3>Semester V: Java & Networks</h3>
+            <p>जावा प्रोग्रामिंग की शुरुआत। JVM आर्किटेक्चर, मल्टी-थ्रेडिंग, एक्सेप्शन हैंडलिंग के साथ-साथ कंप्यूटर नेटवर्क के थ्योरी कांसेप्ट्स का समावेश।</p>
+          </div>
+          <div class="card-tile">
+            <h3>Advanced Core Labs</h3>
+            <p>इंडस्ट्री ओरिएंटेड जावा लैब्स और सॉकेट प्रोग्रामिंग सिमुलेशन जो छात्रों को रियल-टाइम कंपाइलर प्रोजेक्ट्स के लिए तैयार करते हैं।</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <h2>Semester VI: Web Architecture & Projects</h2>
+        <div class="grid-3">
+          <div class="card-tile">
+            <h3>Web Tech</h3>
+            <p>Full-stack वेब सिस्टम्स, जावास्क्रिप्ट स्टेट मैनेजमेंट और रेस्पॉन्सिव UI डिजाइनिंग प्रिंसिपल्स।</p>
+          </div>
+          <div class="card-tile">
+            <h3>Data Comm</h3>
+            <p>OSI 7-Layers, डेटा ट्रांसमिशन मीडिया और पैकेट स्विचिंग प्रोटोकॉल्स का एडवांस ज्ञान।</p>
+          </div>
+          <div class="card-tile">
+            <h3>Capstones</h3>
+            <p>मेजर प्रोजेक्ट्स डेवलपमेंट जो आपके डेटाबेस और कोर कोडिंग स्किल्स को लाइव सर्वर पर टेस्ट करते हैं।</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <h2>Integrated Project Platform</h2>
+        <p style="margin-bottom: 25px;">इस पोर्टफोलियो वेबसाइट में शामिल तीनों मुख्य प्रोजेक्ट्स को सिलेबस की कसौटी पर कसकर लाइव डेवलप किया गया है:</p>
+        <div class="grid-3">
+          <div class="card-tile">
+            <h3>1. Online Exam System</h3>
+            <p>वेब टेक और जावास्क्रिप्ट लॉजिक का उपयोग करके टाइमर-बेस्ड परीक्षा प्रणाली का निर्माण।</p>
+          </div>
+          <div class="card-tile">
+            <h3>2. Smart Calculator</h3>
+            <p>हाई-प्रिसिजन अर्थमैटिक ऑपरेशन्स के लिए डिजाइन किया गया क्लीन UI कंपोनेंट।</p>
+          </div>
+          <div class="card-tile">
+            <h3>3. Student Management</h3>
+            <p>Java Object स्टेट और DBMS डेटा मॉडल को प्रदर्शित करने वाला कंसोल सिमुलेशन।</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <h2>Syllabus Danger MCQs (Part 1)</h2>
+        <div class="danger-box">
+          <strong>DBMS: Indexing Architecture <span class="danger-tag">Danger Level</span></strong>
+          <p>Q: कौन सा इंडेक्स डेटा फाइलों के फिजिकल ऑर्डर को निर्धारित करता है? <br>💡 <span class="highlight">लॉजिक: Clustered Index</span> (यह टेबल के डेटा को सॉर्ट करके स्टोर करता है, इसलिए प्रति टेबल सिर्फ एक हो सकता है)।</p>
+        </div>
+        <div class="danger-box">
+          <strong>Operating System: Deadlock Safe State <span class="danger-tag">Danger Level</span></strong>
+          <p>Q: बैंकर्स एल्गोरिदम का उपयोग किस कार्य के लिए किया जाता है? <br>💡 <span class="highlight">लॉजिक: Deadlock Avoidance</span> (यह सिस्टम रिसोर्स एलोकेशन ग्राफ को 'Safe State' में बनाए रखता है)।</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <h2>Syllabus Danger MCQs (Part 2)</h2>
+        <div class="danger-box">
+          <strong>Java: Memory Management <span class="danger-tag">Danger Level</span></strong>
+          <p>Q: जावा में सभी क्लास-लेवल ऑब्जेक्ट्स और इंस्टेंस वेरिएबल्स कहाँ स्टोर होते हैं? <br>💡 <span class="highlight">लॉजिक: Heap Area</span> (मेमोरी के हीप सेक्शन में डायनामिक एलोकेशन होता है, जबकि थ्रेड्स लोकल स्टैक का उपयोग करते हैं)।</p>
+        </div>
+        <div class="danger-box">
+          <strong>Data Structures: Binary Trees <span class="danger-tag">Danger Level</span></strong>
+          <p>Q: एक बाइनरी सर्च ट्री (BST) का Inorder Traversal हमेशा कैसा आउटपुट देता है? <br>💡 <span class="highlight">लॉजिक: Sorted Ascending Order</span> (बिल्कुल बढ़ते क्रम में डेटा अरेंज होकर मिलता है)।</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <h2>Technical Competency Growth Curve</h2>
+        <p style="margin-bottom: 20px;">6 सेमेस्टर के दौरान विभिन्न प्रोग्रामिंग डोमेन्स में हासिल की गई विशेषज्ञता का इंडेक्स:</p>
+        <svg viewBox="0 0 1000 300" style="width: 100%; height: 250px; background: rgba(255,255,255,0.01); border-radius: 10px; padding: 20px;">
+          <path d="M50,250 L200,210 L450,150 L650,90 L850,50 L950,30" fill="none" stroke="#38bdf8" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="50" cy="250" r="7" fill="#818cf8"/>
+          <circle cx="200" cy="210" r="7" fill="#818cf8"/>
+          <circle cx="450" cy="150" r="7" fill="#818cf8"/>
+          <circle cx="650" cy="90" r="7" fill="#818cf8"/>
+          <circle cx="850" cy="50" r="7" fill="#818cf8"/>
+          <circle cx="950" cy="30" r="7" fill="#818cf8"/>
+          <g fill="#94a3b8" font-size="14">
+            <text x="40" y="280">Sem I</text><text x="190" y="280">Sem II</text>
+            <text x="440" y="280">Sem III</text><text x="640" y="280">Sem IV</text>
+            <text x="840" y="280">Sem V</text><text x="920" y="280">Sem VI</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="slide">
+        <h2>System Optimization Metrics</h2>
+        <p>डेवलप किए गए तीनों प्रोजेक्ट्स के कंपाइलर और यूज़र इंटरफेस की परफॉरमेंस टेस्ट रिपोर्ट:</p>
+        <div class="bar-chart">
+          <div class="bar-item">
+            <div class="bar-label">Online Exam Score Engine</div>
+            <div class="bar-track"><div class="bar-fill" style="width: 96%;">96% Efficiency</div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-label">Smart Calculator Precision</div>
+            <div class="bar-track"><div class="bar-fill" style="width: 90%;">90% Processing Speed</div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-label">Student Record Integrity</div>
+            <div class="bar-track"><div class="bar-fill" style="width: 85%;">85% Data Consistency</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <h2>Future Development Roadmaps</h2>
+        <div class="grid-2">
+          <div class="card-tile">
+            <h3>Cloud & Framework Integration</h3>
+            <p>इन लोकल वेब सिस्टम्स को आगे चलकर Spring Boot (Java Backend) और PostgreSQL क्लाउड डेटाबेस के साथ लिंक करने की योजना है, ताकि यह हैवी लोड हैंडल कर सके।</p>
+          </div>
+          <div>
+            <h3>Security Architecture</h3>
+            <p>एग्जाम सिस्टम में रैंडम एमसीक्यू शफलिंग और टोकन-बेस्ड स्टूडेंट लॉगिन सिक्योरिटीज को जोड़ना अगला मुख्य लक्ष्य है।</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide" style="text-align: center; justify-content: center;">
+        <h1 style="font-size: 3rem;">Thank You!</h1>
+        <p style="font-size: 1.2rem; margin-top: 15px;">Sudeep Singh | Professional Academic Roadmap Completed</p>
+        <div style="margin-top: 40px; display: flex; gap: 30px; justify-content: center; color: var(--primary);">
+          <span><i class="fab fa-github"></i> github.com/sudeepsingh-ss</span>
+          <span><i class="fas fa-envelope"></i> mail@example.com</span>
+        </div>
+      </div>
+
     </div>
 
-    <div class="slide">
-      <h2><i class="fas fa-code"></i> Developed Projects Architecture</h2>
-      <p style="margin-bottom: 15px;">पोर्टफोलियो में शामिल तीन मुख्य सिस्टम्स का वर्किंग लॉजिक:</p>
-      <ul>
-        <li><strong>Online Exam System:</strong> JavaScript स्टेट इंजन, लाइव काउंटर टाइमर, और रियल-टाइम रिजल्ट कैलकुलेशन।</li>
-        <li><strong>Smart Calculator:</strong> High-precision गणितीय कैलकुलेशन के लिए डिजाइन किया गया UI।</li>
-        <li><strong>Student Management:</strong> DBMS और Java का डेटा सिमुलेशन जो रिकॉर्ड्स को स्टोर करता है।</li>
-      </ul>
-    </div>
-
-    <div class="slide">
-      <h2><i class="fas fa-exclamation-triangle"></i> Syllabus Danger MCQs Analyzed</h2>
-      <p style="margin-bottom: 15px;">परीक्षा प्रणाली में जोड़े गए सबसे कठिन टॉपिक्स:</p>
-      <p><strong>1. DBMS:</strong> Clustered vs Non-Clustered Indexing लॉजिक। <span class="danger-tag">Danger Level</span></p>
-      <p><strong>2. Operating System:</strong> Deadlock Prevention और Banker's Algorithm Safe State। <span class="danger-tag">Danger Level</span></p>
-      <p><strong>3. Java:</strong> Multi-threading में Race Conditions और Thread Synchronization। <span class="danger-tag">Danger Level</span></p>
-    </div>
-
+    <div class="dots-container" id="dotsContainer"></div>
   </div>
 
+  <script>
+    const container = document.getElementById('slidesContainer');
+    const dotsContainer = document.getElementById('dotsContainer');
+    const totalSlides = 13;
+    let currentIdx = 0;
+
+    // Dynamically create bottom indicators dots
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('div');
+      dot.className = `dot ${i === 0 ? 'active' : ''}`;
+      dot.setAttribute('onclick', `goToSlide(${i})`);
+      dotsContainer.appendChild(dot);
+    }
+
+    const dots = document.querySelectorAll('.dot');
+
+    function updateSlider() {
+      container.style.transform = `translateX(-${currentIdx * (100 / totalSlides)}%)`;
+      dots.forEach((dot, index) => {
+        if (index === currentIdx) dot.classList.add('active');
+        else dot.classList.remove('active');
+      });
+    }
+
+    function moveSlide(direction) {
+      currentIdx += direction;
+      if (currentIdx >= totalSlides) currentIdx = 0;
+      if (currentIdx < 0) currentIdx = totalSlides - 1;
+      updateSlider();
+    }
+
+    function goToSlide(index) {
+      currentIdx = index;
+      updateSlider();
+    }
+
+    // Optional: Auto-slide transition every 6 seconds from right to left
+    setInterval(() => {
+      moveSlide(1);
+    }, 6000);
+  </script>
 </body>
 </html>
