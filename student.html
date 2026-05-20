@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Records Management System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root { --bg: #0f172a; --card: #1e293b; --primary: #38bdf8; --text: #f8fafc; --success: #10b981; }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+    body { background: var(--bg); color: var(--text); padding: 40px 10%; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+    .card { background: var(--card); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+    form { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
+    input, button { padding: 12px 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: #0f172a; color: white; font-size: 1rem; }
+    input:focus { border-color: var(--primary); outline: none; }
+    button.btn-add { background: var(--primary); color: #0f172a; font-weight: 600; cursor: pointer; transition: 0.3s; }
+    button.btn-add:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(56,189,248,0.3); }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left; }
+    th, td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    th { color: var(--primary); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+    .back-btn { color: #94a3b8; text-decoration: none; display: inline-block; margin-bottom: 20px; }
+    .back-btn:hover { color: var(--primary); }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+  <div class="header">
+    <h2><i class="fas fa-users-cog" style="color: var(--primary);"></i> Student Management Console</h2>
+    <span style="color: var(--success); background: rgba(16,185,129,0.1); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">Connected to Live State System</span>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom: 20px; color: #94a3b8;">Add New Student Record (DBMS Sync simulation)</h3>
+    <form id="studentForm" onsubmit="addStudent(event)">
+      <input type="text" id="sname" placeholder="Student Name" required>
+      <input type="text" id="sroll" placeholder="Roll Number (e.g. 26BCA01)" required>
+      <input type="text" id="scourse" placeholder="Course / Semester" value="B.Sc. CS - 6th Sem" required>
+      <button type="submit" class="btn-add"><i class="fas fa-plus"></i> Insert Record</button>
+    </form>
+    <table>
+      <thead>
+        <tr><th>Roll No</th><th>Student Name</th><th>Course/Semester</th><th>DB Status</th></tr>
+      </thead>
+      <tbody id="table-body">
+        <tr><td>26BCA01</td><td>Sudeep Singh</td><td>B.Sc. CS - 6th Sem</td><td style="color:var(--success)">Stored Successfully</td></tr>
+        <tr><td>26BCA02</td><td>Pankaj Thakur</td><td>B.Sc. CS - 6th Sem</td><td style="color:var(--success)">Stored Successfully</td></tr>
+        <tr><td>26BCA03</td><td>Aman Thakur</td><td>B.Sc. CS - 6th Sem</td><td style="color:var(--success)">Stored Successfully</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    function addStudent(e) {
+      e.preventDefault();
+      let name = document.getElementById('sname').value;
+      let roll = document.getElementById('sroll').value;
+      let course = document.getElementById('scourse').value;
+      let tbody = document.getElementById('table-body');
+      let row = document.createElement('tr');
+      row.innerHTML = `<td>${roll}</td><td>${name}</td><td>${course}</td><td style="color:var(--success)">Stored Successfully</td>`;
+      tbody.appendChild(row);
+      document.getElementById('studentForm').reset();
+      document.getElementById('scourse').value = "B.Sc. CS - 6th Sem";
+    }
+  </script>
+</body>
+</html>
+
