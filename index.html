@@ -175,7 +175,6 @@ align-items:center;
 gap:10px;
 transition:.3s;
 }
-
 .btn-primary{
 background:linear-gradient(135deg,var(--primary),var(--secondary));
 color:white;
@@ -221,7 +220,8 @@ font-weight:800;
 background:linear-gradient(135deg,var(--primary),var(--secondary));
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-}     
+}
+
 .about-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -507,8 +507,8 @@ display:none;
 
 </style>
 </head>
-<body>
-<div id="loader">
+<body>  
+  <div id="loader">
 <div class="loader-circle"></div>
 <h2>Loading Portfolio...</h2>
 </div>
@@ -551,7 +551,7 @@ Download Resume
 
 <div class="hero-image">
 <div class="glow"></div>
-<img src="1000094339.jpg">
+<img src="Sudeep.jpg">
 </div>
 
 </div>
@@ -586,40 +586,76 @@ Download Resume
 </section>
 
 <section id="skills">
+<style>
+.skill-popup{
+margin-top:15px;
+padding:15px;
+border-radius:14px;
+background:rgba(56,189,248,.08);
+display:none;
+line-height:1.7;
+color:var(--muted);
+font-size:.92rem;
+}
+.skill-box.active .skill-popup{
+display:block;
+animation:fadeIn .5s ease;
+}
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(10px)}
+to{opacity:1;transform:translateY(0)}
+}
+.presentation-slider{
+position:relative;
+overflow:hidden;
+height:420px;
+border-radius:24px;
+background:var(--card);
+border:1px solid var(--border);
+}
+.presentation-track{
+display:flex;
+width:700%;
+height:100%;
+transition:1s ease;
+}
+.presentation-slide{
+width:100%;
+flex-shrink:0;
+padding:45px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+.presentation-slide h3{
+font-size:2rem;
+margin-bottom:20px;
+color:var(--primary);
+}
+.presentation-slide p, .presentation-slide li{
+color:var(--muted);
+line-height:1.8;
+}
+.presentation-slide ul{
+padding-left:20px;
+}
+</style>
 <div class="container">
 <h2 class="section-title">Technical <span>Skills</span></h2>
 
 <div class="skills-grid reveal">
 
-<div class="skill-box">
-<h4>HTML / CSS</h4>
-<div class="progress"><span style="width:95%"></span></div>
-</div>
+<div class="skill-box" onclick="toggleSkill(this)"><h4>HTML / CSS</h4><div class="progress"><span style="width:95%"></span></div><div class="skill-popup"><b>Important Topics:</b><br>• Semantic HTML<br>• Flexbox & Grid<br>• Responsive Design<br>• Animations & Glassmorphism<br>• Media Queries</div></div>
 
-<div class="skill-box">
-<h4>JavaScript</h4>
-<div class="progress"><span style="width:88%"></span></div>
-</div>
+<div class="skill-box" onclick="toggleSkill(this)"><h4>JavaScript</h4><div class="progress"><span style="width:88%"></span></div><div class="skill-popup"><b>Important Topics:</b><br>• DOM Manipulation<br>• Events & Functions<br>• Closures<br>• Arrays & Objects<br>• Async Logic</div></div>
 
-<div class="skill-box">
-<h4>Java</h4>
-<div class="progress"><span style="width:80%"></span></div>
-</div>
+<div class="skill-box" onclick="toggleSkill(this)"><h4>Java</h4><div class="progress"><span style="width:80%"></span></div><div class="skill-popup"><b>Important Topics:</b><br>• OOP Concepts<br>• JVM & JDK<br>• Multithreading<br>• Exception Handling<br>• Collections</div></div>
 
-<div class="skill-box">
-<h4>DBMS</h4>
-<div class="progress"><span style="width:85%"></span></div>
-</div>
+<div class="skill-box" onclick="toggleSkill(this)"><h4>DBMS</h4><div class="progress"><span style="width:85%"></span></div><div class="skill-popup"><b>Important Topics:</b><br>• SQL Queries<br>• Normalization<br>• ER Model<br>• Transactions<br>• Indexing</div></div>
 
-<div class="skill-box">
-<h4>Operating System</h4>
-<div class="progress"><span style="width:82%"></span></div>
-</div>
+<div class="skill-box" onclick="toggleSkill(this)"><h4>Operating System</h4><div class="progress"><span style="width:82%"></span></div><div class="skill-popup"><b>Important Topics:</b><br>• Process Scheduling<br>• Deadlocks<br>• Memory Management<br>• Paging & Segmentation<br>• File System</div></div>
 
-<div class="skill-box">
-<h4>Networking</h4>
-<div class="progress"><span style="width:78%"></span></div>
-</div>
+<div class="skill-box" onclick="toggleSkill(this)"><h4>Networking</h4><div class="progress"><span style="width:78%"></span></div><div class="skill-popup"><b>Important Topics:</b><br>• OSI Model<br>• TCP/IP<br>• CRC & Error Detection<br>• Routing & Switching<br>• Network Security</div></div>
 
 </div>
 </div>
@@ -641,7 +677,7 @@ Download Resume
 <span>CSS</span>
 <span>JavaScript</span>
 </div>
-<a href="#" class="btn btn-primary">Live Demo</a>
+<a href="javascript:void(0)" onclick="openProject(this)" class="btn btn-primary">Live Demo</a>
 </div>
 </div>
 
@@ -655,9 +691,10 @@ Download Resume
 <span>Responsive</span>
 <span>UI/UX</span>
 </div>
-<a href="#" class="btn btn-primary">Live Demo</a>
+<a href="javascript:void(0)" onclick="openProject(this)" class="btn btn-primary">Live Demo</a>
 </div>
 </div>
+
 <div class="project-card">
 <img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?q=80&w=1200&auto=format&fit=crop">
 <div class="project-content">
@@ -668,50 +705,81 @@ Download Resume
 <span>SQL</span>
 <span>CRUD</span>
 </div>
-<a href="#" class="btn btn-primary">Live Demo</a>
+<a href="javascript:void(0)" onclick="openProject(this)" class="btn btn-primary">Live Demo</a>
 </div>
 </div>
 
 </div>
 </div>
 </section>
-
 <section id="timeline">
 <div class="container">
-<h2 class="section-title">Academic <span>Roadmap</span></h2>
+<h2 class="section-title">CSJMU Academic <span>Presentation</span></h2>
+<div class="presentation-slider reveal">
+<div class="presentation-track" id="presentationTrack">
 
-<div class="timeline reveal">
-
-<div class="timeline-item">
-<h3>Semester 1</h3>
-<p>Python Fundamentals, Problem Solving, and Computer Basics.</p>
+<div class="presentation-slide">
+<h3>CSJMU Kanpur - B.Sc Computer Science</h3>
+<p>NEP 2020 based academic curriculum focused on programming, system architecture, web development, networking, and database systems.</p>
 </div>
 
-<div class="timeline-item">
-<h3>Semester 2</h3>
-<p>Database Management System and SQL Architecture.</p>
+<div class="presentation-slide">
+<h3>Semester I</h3>
+<ul>
+<li>Python Fundamentals</li>
+<li>Computer Basics</li>
+<li>Problem Solving Techniques</li>
+<li>Programming Logic Building</li>
+</ul>
 </div>
 
-<div class="timeline-item">
-<h3>Semester 3</h3>
-<p>C Programming, Data Structures, and Algorithm Design.</p>
+<div class="presentation-slide">
+<h3>Semester II</h3>
+<ul>
+<li>Database Management System</li>
+<li>SQL Queries</li>
+<li>ER Model</li>
+<li>Normalization</li>
+</ul>
 </div>
 
-<div class="timeline-item">
-<h3>Semester 4</h3>
-<p>Operating Systems, Scheduling Algorithms, and Memory Management.</p>
+<div class="presentation-slide">
+<h3>Semester III & IV</h3>
+<ul>
+<li>C Programming</li>
+<li>Data Structures</li>
+<li>Operating Systems</li>
+<li>Scheduling Algorithms</li>
+<li>Deadlock Management</li>
+</ul>
 </div>
 
-<div class="timeline-item">
-<h3>Semester 5</h3>
-<p>Java Enterprise Programming and Object-Oriented Development.</p>
+<div class="presentation-slide">
+<h3>Semester V</h3>
+<ul>
+<li>Core Java</li>
+<li>OOP Concepts</li>
+<li>Multithreading</li>
+<li>Java Enterprise Concepts</li>
+</ul>
 </div>
 
-<div class="timeline-item">
-<h3>Semester 6</h3>
-<p>Web Technology, Computer Networks, and Security Concepts.</p>
+<div class="presentation-slide">
+<h3>Semester VI</h3>
+<ul>
+<li>Web Technology</li>
+<li>HTML CSS JavaScript</li>
+<li>Computer Networks</li>
+<li>Cyber Security Basics</li>
+</ul>
 </div>
 
+<div class="presentation-slide">
+<h3>Thank You!</h3>
+<p>Sudeep Thakur<br><br>GitHub: github.com/sudeepsingh-ss<br>Email: sudeepsikarwar3@gmail.comd</p>
+</div>
+
+</div>
 </div>
 </div>
 </section>
@@ -751,7 +819,7 @@ Download Resume
 
 <div class="info">
 <h3>Email</h3>
-<p>yourmail@gmail.com</p>
+<p>sudeepsikarwar3@gmail.comd</p>
 </div>
 
 <div class="info">
@@ -837,6 +905,22 @@ r.classList.add('active');
 }
 
 window.addEventListener('scroll',reveal);
+
+function toggleSkill(box){
+box.classList.toggle('active');
+}
+
+function openProject(btn){
+alert('Project Connected Successfully! Add your project HTML files like exam.html, calculator.html, and student.html in the same folder.');
+}
+
+const presentationTrack=document.getElementById('presentationTrack');
+let presentationIndex=0;
+
+setInterval(()=>{
+presentationIndex=(presentationIndex+1)%7;
+presentationTrack.style.transform=translateX(-${presentationIndex*100}%);
+},5000);
 
 </script>
 
