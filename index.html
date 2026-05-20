@@ -210,6 +210,12 @@
       color: var(--accent-color);
       text-decoration: none;
       font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .project-card .project-link:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
     }
 
     .project-card:hover {
@@ -253,7 +259,7 @@
     /* Responsive adjustments */
     @media (max-width: 768px) {
       nav { padding: 20px 5%; }
-      .nav-links { display: none; } /* Simplifies mobile view */
+      .nav-links { display: none; }
       .hero h1 { font-size: 2.5rem; }
       section { padding: 60px 5%; }
     }
@@ -274,7 +280,7 @@
   <div class="hero">
     <h1 data-aos="fade-down" data-aos-duration="1000">Hi, I'm Sudeep Singh</h1>
     <p data-aos="fade-up" data-aos-duration="1200">B.Sc. Computer Application Student & Tech Enthusiast. Building modern web experiences and exploring backend development with Java.</p>
-    <a href="#contact" class="btn" data-aos="zoom-in" data-aos-duration="1500">Get In Touch</a>
+    <a href="#projects" class="btn" data-aos="zoom-in" data-aos-duration="1500">See My Work</a>
   </div>
 
   <section id="about">
@@ -309,44 +315,34 @@
   <section id="projects">
     <h2 data-aos="fade-up">Projects</h2>
     <div class="projects-grid">
-      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-        <h3><i class="fas fa-globe"></i> Premium Portfolio</h3>
-        <p>यह मेरी खुद की बनाई हुई रेस्पॉन्सिव पोर्टफोलियो वेबसाइट है, जिसमें एडवांस CSS ग्रिड, फ्लेक्सबॉक्स और स्क्रॉल एनिमेशन्स का यूज़ हुआ है।</p>
-        <a href="#" class="project-link">View Code →</a>
-      </div>
-      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-        <h3><i class="fas fa-calculator"></i> Smart Calculator</h3>
-        <p>एक इंटरैक्टिव कैलकुलेटर प्रोजेक्ट जो वेब पर मैथमैटिकल कैलकुलेशंस को तेज़ी और सही तरीके से हल करता है।</p>
-        <a href="#" class="project-link">View Code →</a>
-      </div>
-      <div   <section id="projects">
-    <h2 data-aos="fade-up">Projects</h2>
-    <div class="projects-grid">
+      
       <div class="project-card" data-aos="fade-up" data-aos-delay="100">
         <h3><i class="fas fa-graduation-cap"></i> Online Exam System</h3>
         <p>यह मेरा मुख्य प्रोजेक्ट है। यह एक पूरी तरह से काम करने वाला ऑनलाइन एग्जामिनेशन सिस्टम है, जिसमें जावा, डीबीएमएस और वेब टेक के कठिन MCQs, लाइव टाइमर और स्कोर कैलकुलेशन सिस्टम शामिल है।</p>
-        <a href="exam.html" class="project-link">Live Project Dekhein →</a>
+        <a href="exam.html" class="project-link">Open Project →</a>
       </div>
+      
       <div class="project-card" data-aos="fade-up" data-aos-delay="200">
         <h3><i class="fas fa-calculator"></i> Smart Calculator</h3>
         <p>एक इंटरैक्टिव कैलकुलेटर प्रोजेक्ट जो वेब पर मैथमैटिकल कैलकुलेशंस को तेज़ी और सही तरीके से हल करता है।</p>
-        <a href="#" class="project-link">View Code →</a>
+        <a href="#" class="project-link">View Details →</a>
       </div>
+      
       <div class="project-card" data-aos="fade-up" data-aos-delay="300">
         <h3><i class="fas fa-users-cog"></i> Student Management</h3>
-        <p>Java और DBMS पर आधारित एक कंसोल/वेब प्रोजेक्ट, जिसका उपयोग छात्रों का डेटा रिकॉर्ड और मैनेज करने के लिए किया जाता है।</p>
-        <a href="#" class="project-link">View Code →</a>
+        <p>Java और DBMS पर आधारित एक एडवांस प्रोजेक्ट, जिसका उपयोग छात्रों का डेटा, मार्क्स और अटेंडेंस रिकॉर्ड डिजिटली मैनेज करने के लिए किया जाता है।</p>
+        <a href="#" class="project-link">View Details →</a>
       </div>
+      
     </div>
   </section>
-
 
   <section id="contact">
     <h2 data-aos="fade-up">Contact Me</h2>
     <div class="contact-info" data-aos="zoom-in">
       <div class="contact-item">
         <i class="fas fa-envelope"></i>
-        <span>sudeepsikarwar3@gmail.com</span>
+        <span>yourmail@gmail.com</span>
       </div>
       <div class="contact-item">
         <i class="fas fa-map-marker-alt"></i>
@@ -362,7 +358,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init({
-      once: true /* एलीमेंट पर स्क्रॉल करने पर एनिमेशन केवल एक  बार होगा */
+      once: true
     });
   </script>
 </body>
