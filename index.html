@@ -175,6 +175,7 @@ align-items:center;
 gap:10px;
 transition:.3s;
 }
+
 .btn-primary{
 background:linear-gradient(135deg,var(--primary),var(--secondary));
 color:white;
@@ -507,8 +508,9 @@ display:none;
 
 </style>
 </head>
-<body>  
-  <div id="loader">
+<body>
+
+<div id="loader">
 <div class="loader-circle"></div>
 <h2>Loading Portfolio...</h2>
 </div>
@@ -646,7 +648,6 @@ padding-left:20px;
 <div class="skills-grid reveal">
 
 <div class="skill-box" onclick="toggleSkill(this)"><h4>HTML / CSS</h4><div class="progress"><span style="width:95%"></span></div><div class="skill-popup"><b>Important Topics:</b><br>• Semantic HTML<br>• Flexbox & Grid<br>• Responsive Design<br>• Animations & Glassmorphism<br>• Media Queries</div></div>
-
 <div class="skill-box" onclick="toggleSkill(this)"><h4>JavaScript</h4><div class="progress"><span style="width:88%"></span></div><div class="skill-popup"><b>Important Topics:</b><br>• DOM Manipulation<br>• Events & Functions<br>• Closures<br>• Arrays & Objects<br>• Async Logic</div></div>
 
 <div class="skill-box" onclick="toggleSkill(this)"><h4>Java</h4><div class="progress"><span style="width:80%"></span></div><div class="skill-popup"><b>Important Topics:</b><br>• OOP Concepts<br>• JVM & JDK<br>• Multithreading<br>• Exception Handling<br>• Collections</div></div>
@@ -712,6 +713,7 @@ padding-left:20px;
 </div>
 </div>
 </section>
+
 <section id="timeline">
 <div class="container">
 <h2 class="section-title">CSJMU Academic <span>Presentation</span></h2>
@@ -874,7 +876,9 @@ Advanced Cyber Portfolio © 2026
 <script>
 
 window.addEventListener('load',()=>{
+setTimeout(()=>{
 document.getElementById('loader').style.display='none';
+},1200)
 })
 
 const text="A passionate Computer Science student building futuristic web applications, optimized systems, and advanced responsive UI architectures.";
@@ -917,10 +921,12 @@ alert('Project Connected Successfully! Add your project HTML files like exam.htm
 const presentationTrack=document.getElementById('presentationTrack');
 let presentationIndex=0;
 
+if(presentationTrack){
 setInterval(()=>{
 presentationIndex=(presentationIndex+1)%7;
-presentationTrack.style.transform=translateX(-${presentationIndex*100}%);
+presentationTrack.style.transform='translateX(-'+(presentationIndex*100)+'%)';
 },5000);
+}
 
 </script>
 
