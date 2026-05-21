@@ -1,174 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Management</title>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins,sans-serif;
-}
-
-body{
-background:#020617;
-padding:40px;
-color:white;
-}
-
-.container{
-max-width:1000px;
-margin:auto;
-background:rgba(15,23,42,.8);
-padding:30px;
-border-radius:25px;
-border:1px solid rgba(255,255,255,.08);
-backdrop-filter:blur(10px);
-}
-
-h1{
-text-align:center;
-margin-bottom:30px;
-}
-
-.form{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-margin-bottom:25px;
-}
-
-input{
-padding:14px;
-border:none;
-border-radius:12px;
-outline:none;
-background:#1e293b;
-color:white;
-}
-
-button{
-padding:14px;
-border:none;
-border-radius:12px;
-background:linear-gradient(135deg,#38bdf8,#6366f1);
-color:white;
-font-weight:700;
-cursor:pointer;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:20px;
-overflow:hidden;
-border-radius:15px;
-}
-
-th,td{
-padding:15px;
-text-align:center;
-}
-
-th{
-background:#38bdf8;
-}
-
-tr:nth-child(even){
-background:#1e293b;
-}
-
-.delete-btn{
-background:#ef4444;
-padding:8px 14px;
-border-radius:8px;
-cursor:pointer;
-border:none;
-color:white;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        :root { --bg: #020617; --primary: #38bdf8; --text: #f8fafc; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; padding: 40px; display: flex; flex-direction: column; align-items: center; }
+        .box { background: rgba(15, 23, 42, 0.9); padding: 30px; border-radius: 20px; width: 100%; max-width: 500px; border: 1px solid #334155; }
+        input { width: 100%; padding: 12px; margin: 10px 0; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px; }
+        button { width: 100%; padding: 12px; background: var(--primary); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        table { width: 100%; margin-top: 20px; border-collapse: collapse; }
+        th, td { border: 1px solid #334155; padding: 10px; text-align: center; }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-
-<h1>Student Management System</h1>
-
-<div class="form">
-
-<input type="text" id="name" placeholder="Student Name">
-
-<input type="text" id="roll" placeholder="Roll Number">
-
-<input type="text" id="course" placeholder="Course">
-
-<button onclick="addStudent()">Add Student</button>
-
+<div class="box">
+    <h2>Add Student Record</h2>
+    <input type="text" id="name" placeholder="Student Name">
+    <input type="text" id="roll" placeholder="Roll Number">
+    <button onclick="addStudent()">Add Student</button>
 </div>
 
-<table>
-
-<thead>
-
-<tr>
-<th>Name</th>
-<th>Roll No</th>
-<th>Course</th>
-<th>Action</th>
-</tr>
-
-</thead>
-
-<tbody id="studentTable"></tbody>
-
+<table id="studentTable">
+    <thead><tr><th>Name</th><th>Roll No</th></tr></thead>
+    <tbody></tbody>
 </table>
 
-</div>
-
 <script>
-
-function addStudent(){
-
-const name=document.getElementById('name').value;
-const roll=document.getElementById('roll').value;
-const course=document.getElementById('course').value;
-
-if(name===''||roll===''||course===''){
-alert('Please fill all fields');
-return;
-}
-
-const table=document.getElementById('studentTable');
-
-const row=table.insertRow();
-
-row.innerHTML=`
-<td>${name}</td>
-<td>${roll}</td>
-<td>${course}</td>
-<td>
-<button class="delete-btn" onclick="deleteRow(this)">
-Delete
-</button>
-</td>
-`;
-
-document.getElementById('name').value='';
-document.getElementById('roll').value='';
-document.getElementById('course').value='';
-
-}
-
-function deleteRow(btn){
-btn.parentElement.parentElement.remove();
-}
-
+    function addStudent() {
+        const name = document.getElementById('name').value;
+        const roll = document.getElementById('roll').value;
+        if(!name || !roll) return alert("Please fill details!");
+        
+        const tbody = document.querySelector('tbody');
+        tbody.innerHTML += `<tr><td>${name}</td><td>${roll}</td></tr>`;
+        
+        // Clear inputs
+        document.getElementById('name').value = '';
+        document.getElementById('roll').value = '';
+    }
 </script>
 
 </body>
